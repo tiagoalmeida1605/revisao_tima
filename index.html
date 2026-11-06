@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0ec" id="themeColorMeta">
+  <meta name="description" content="Guia de estudos da TI01MA: calendário de avaliações, conteúdos por disciplina e questões para praticar.">
+  <meta name="color-scheme" content="light dark">
+  <title>TI01MA | Guia de Estudos</title>
+  <link rel="icon" href="assets/img/ti01ma.svg" type="image/svg+xml">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('ti01ma-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved || preferred;
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/quiz-data.js" defer></script>
+  <script src="assets/js/enem-api.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="TI01MA, voltar ao início">
+      <span class="brand-symbol" aria-hidden="true">TI</span>
+      <span class="brand-copy">
+        <strong>TI<span>01MA</span></strong>
+        <small>guia de estudos · 1TIA</small>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+      <a href="#agenda">Agenda</a>
+      <a href="#materias">Conteúdos</a>
+      <a href="#banco-enem">Banco ENEM</a>
+      <a href="#treino">Treino</a>
+      <a href="#fontes">Fontes</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+        <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">◐</span>
+        <span id="themeToggleLabel">Modo escuro</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section-shell" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span class="hero-kicker-dot"></span> UNASP-SP <span class="hero-kicker-divider">/</span> 1TIA · 4º BIMESTRE 2026</div>
+        <p class="eyebrow">BASE DE ESTUDOS · TI01MA</p>
+        <h1 id="hero-title">GUIA DE<br><span>ESTUDOS.</span></h1>
+        <p class="hero-lead">O ponto de encontro da TI01MA para organizar as avaliações, revisar os conteúdos e treinar antes da semana de provas.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#agenda">Explorar calendário <span aria-hidden="true">↘</span></a>
+          <a class="button button-outline" href="#materias">Começar revisão</a>
+        </div>
+        <div class="hero-facts" aria-label="Resumo do guia">
+          <div><strong>05</strong><span>dias de avaliação</span></div>
+          <div><strong>09</strong><span>disciplinas</span></div>
+          <div><strong>17</strong><span>questões autorais</span></div>
+        </div>
+        <div class="hero-meta"><span class="live-dot"></span> Material de apoio da turma <span class="meta-separator">/</span> atualizado em 06.11.2026</div>
+      </div>
+      <div class="hero-art" aria-label="Identidade visual tipográfica da turma TI01MA">
+        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+        <div class="hero-identity">
+          <div class="hero-identity-top"><span>UNASP-SP</span><span>INFORMÁTICA</span></div>
+          <div class="hero-identity-main"><span class="hero-identity-prefix">TURMA</span><strong>01</strong><span class="hero-identity-suffix">TI01MA</span></div>
+          <div class="hero-identity-bottom"><span>1º ANO TÉCNICO</span><span>2026 <i></i> 4º BIMESTRE</span></div>
+        </div>
+        <div class="hero-art-index"><span>GUIA DA TURMA</span><strong>01 / 05</strong></div>
+      </div>
+      <div class="hero-bottom-mark">01TIMA <span>/</span> GUIA DA TURMA</div>
+    </section>
+
+    <section class="section-shell section-block" id="agenda">
+      <div class="section-heading">
+        <div><p class="eyebrow dark-eyebrow">MAPA DA SEMANA</p><h2>Calendário de avaliações</h2></div>
+        <p class="section-note">Duas matérias na maioria dos dias.<br>Quinta-feira tem apenas Inglês no cronograma.</p>
+      </div>
+      <div class="schedule-grid">
+        <a class="schedule-card" href="#segunda"><span class="schedule-day">SEG</span><span class="schedule-date">09<span>/11</span></span><span class="schedule-subjects">Português<br>Literatura</span><span class="schedule-arrow">↗</span></a>
+        <a class="schedule-card" href="#terca"><span class="schedule-day">TER</span><span class="schedule-date">10<span>/11</span></span><span class="schedule-subjects">Matemática<br>Biologia</span><span class="schedule-arrow">↗</span></a>
+        <a class="schedule-card" href="#quarta"><span class="schedule-day">QUA</span><span class="schedule-date">11<span>/11</span></span><span class="schedule-subjects">História<br>Geografia</span><span class="schedule-arrow">↗</span></a>
+        <a class="schedule-card schedule-card-muted" href="#quinta"><span class="schedule-day">QUI</span><span class="schedule-date">12<span>/11</span></span><span class="schedule-subjects">Inglês<br><small>avaliação única</small></span><span class="schedule-arrow">↗</span></a>
+        <a class="schedule-card" href="#sexta"><span class="schedule-day">SEX</span><span class="schedule-date">13<span>/11</span></span><span class="schedule-subjects">Física<br>Química</span><span class="schedule-arrow">↗</span></a>
+      </div>
+      <p class="micro-note">Datas e disciplinas transcritas do cronograma escolar enviado. Confirme eventuais alterações com os professores.</p>
+    </section>
+
+    <section class="section-shell section-block" id="materias">
+      <div class="section-heading">
+        <div><p class="eyebrow dark-eyebrow">GUIA DE CONTEÚDOS</p><h2>Revisão por dia</h2></div>
+        <p class="section-note">Abra a matéria para conferir os tópicos.<br>O conteúdo segue a sistemática da turma.</p>
+      </div>
+
+      <article class="day-panel" id="segunda">
+        <div class="day-panel-head"><div><span class="day-label">SEGUNDA · 09/11</span><h3>Leitura, linguagem e literatura</h3></div><span class="day-index">01</span></div>
+        <div class="subject-grid">
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">PT</span><span class="subject-kind">GRAMÁTICA · AV1</span></div>
+            <h4>Português</h4>
+            <p class="subject-desc">Preposição e conjunção · concordância nominal · gêneros textuais · coesão.</p>
+            <details open>
+              <summary>Preposições e conjunções</summary>
+              <div class="detail-content">
+                <p><strong>Preposição</strong> liga termos e estabelece relações como origem, destino, assunto, companhia, causa, instrumento, lugar e tempo.</p>
+                <div class="mini-examples"><span><b>de</b> Campinas · origem</span><span><b>para</b> estudar · finalidade</span><span><b>com</b> a turma · companhia</span><span><b>sobre</b> história · assunto</span></div>
+                <p><strong>Conjunções:</strong> identifique a relação de sentido, não apenas decore a palavra.</p>
+                <div class="relation-grid"><span>Adição <b>e, além disso</b></span><span>Oposição <b>mas, porém, entretanto</b></span><span>Causa <b>porque, já que</b></span><span>Conclusão <b>portanto, logo</b></span><span>Condição <b>se, caso</b></span><span>Finalidade <b>para que</b></span><span>Tempo <b>quando, enquanto</b></span><span>Concessão <b>embora, ainda que</b></span></div>
+              </div>
+            </details>
+            <details>
+              <summary>Concordância nominal</summary>
+              <div class="detail-content">
+                <p>Artigos, pronomes, numerais e adjetivos concordam em gênero e número com o substantivo relacionado.</p>
+                <ul>
+                  <li><b>Inclusos:</b> Seguem inclusos os comprovantes.</li>
+                  <li><b>Anexas:</b> Seguem anexas as declarações. “Em anexo” é invariável.</li>
+                  <li><b>Meio:</b> como “um pouco”, é advérbio e não varia: estavam meio cansados.</li>
+                  <li><b>Bastantes:</b> varia quando equivale a “muitos”: bastantes motivos. Como advérbio, não varia: estudaram bastante.</li>
+                  <li><b>É proibido / é proibida:</b> “É proibido entrar”; “É proibida a entrada”.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Gêneros e coesão textual</summary>
+              <div class="detail-content">
+                <div class="genre-list">
+                  <div><b>Tutorial</b><span>Ensina procedimento; etapas, comandos e sequência.</span></div>
+                  <div><b>Relato pessoal</b><span>Narra experiência vivida; primeira pessoa, fatos e impressões.</span></div>
+                  <div><b>Editorial</b><span>Posição institucional de um veículo; tese e argumentos.</span></div>
+                  <div><b>Lei</b><span>Estabelece normas, direitos e deveres; artigos, parágrafos e incisos.</span></div>
+                  <div><b>Ensaio</b><span>Desenvolve reflexão e interpretação sobre um tema.</span></div>
+                </div>
+                <p><b>Coesão referencial:</b> retoma ou antecipa elementos do texto. <b>Coesão sequencial:</b> conecta ideias e organiza o avanço do texto.</p>
+              </div>
+            </details>
+            <p class="source-line">Sistemática: páginas 2–6, 35–44 e páginas indicadas para os gêneros.</p>
+          </section>
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">LT</span><span class="subject-kind">AV1 · 10 PONTOS</span></div>
+            <h4>Literatura · Romantismo</h4>
+            <p class="subject-desc">Contexto, características e manifestações do Romantismo.</p>
+            <details open>
+              <summary>O que revisar</summary>
+              <div class="detail-content">
+                <ul>
+                  <li>Valorização da subjetividade, emoção e indivíduo.</li>
+                  <li>Idealização amorosa, nacionalismo e natureza associada aos sentimentos.</li>
+                  <li><b>1ª geração:</b> nacionalista/indianista; exaltação da pátria e do indígena idealizado. Gonçalves Dias.</li>
+                  <li><b>2ª geração:</b> ultrarromântica; melancolia, solidão, amor idealizado e subjetivismo. Álvares de Azevedo.</li>
+                  <li><b>3ª geração:</b> condoreira/social; liberdade e crítica à escravidão. Castro Alves.</li>
+                  <li><b>Prosa romântica:</b> romances indianistas, históricos, urbanos e regionalistas. José de Alencar.</li>
+                </ul>
+              </div>
+            </details>
+            <p class="source-line">A sistemática informa Romantismo, mas não enumera as obras específicas da prova. Confira os autores e textos estudados com o professor.</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="day-panel" id="terca">
+        <div class="day-panel-head"><div><span class="day-label">TERÇA · 10/11</span><h3>Números, formas e vida</h3></div><span class="day-index">02</span></div>
+        <div class="subject-grid">
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">MT</span><span class="subject-kind">MÓDULOS 1 E 2</span></div>
+            <h4>Matemática</h4>
+            <p class="subject-desc">Geometria analítica e medidas de variabilidade.</p>
+            <details open><summary>Geometria analítica</summary><div class="detail-content">
+              <p>Alinhamento de três pontos; equação geral e reduzida da reta; inclinação e coeficiente angular; posições relativas; interseção de retas; circunferência.</p>
+              <div class="formula-list"><code>m = (y₂ − y₁) / (x₂ − x₁)</code><small>Coeficiente angular entre dois pontos.</small><code>y = mx + n</code><small>Equação reduzida da reta.</small><code>ax + by + c = 0</code><small>Equação geral da reta.</small><code>(x − a)² + (y − b)² = r²</code><small>Circunferência de centro (a,b) e raio r.</small></div>
+              <p>Retas paralelas distintas têm o mesmo coeficiente angular. Retas perpendiculares não verticais/horizontais têm coeficientes angulares cujo produto é −1.</p>
+            </div></details>
+            <details><summary>Estatística · variabilidade</summary><div class="detail-content">
+              <ul><li><b>Amplitude:</b> maior valor − menor valor.</li><li><b>Variância:</b> mede a dispersão dos valores em relação à média.</li><li><b>Desvio padrão:</b> raiz quadrada da variância; quanto maior, mais dispersos os dados.</li></ul>
+              <code class="formula-block">A = x<sub>máx</sub> − x<sub>mín</sub></code>
+            </div></details>
+            <div class="resource-links"><a href="https://pt.khanacademy.org/math/em-matalgebra2/x1d9e5bc8bded7b21:equacao-dareta-e-posicao-relativa-entre-duas-retas" target="_blank" rel="noopener">Khan Academy · retas</a><a href="https://pt.khanacademy.org/math/em-matestatistica/x5d13d3b4b5b8c419:medidas-dedispersao" target="_blank" rel="noopener">Khan Academy · dispersão</a></div>
+          </section>
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">BIO</span><span class="subject-kind">AV2 · EMBRIOLOGIA ANIMAL</span></div>
+            <h4>Biologia</h4>
+            <p class="subject-desc">Embriologia animal.</p>
+            <details open><summary>Desenvolvimento embrionário</summary><div class="detail-content">
+              <ol><li><b>Fecundação:</b> união dos gametas e formação do zigoto.</li><li><b>Segmentação:</b> divisões celulares sucessivas.</li><li><b>Mórula:</b> aglomerado compacto de células.</li><li><b>Blástula:</b> estágio com cavidade interna.</li><li><b>Gastrulação:</b> formação dos folhetos germinativos.</li><li><b>Neurulação:</b> formação do tubo neural nos cordados.</li><li><b>Organogênese:</b> diferenciação e formação dos órgãos.</li></ol>
+            </div></details>
+            <details><summary>Folhetos embrionários</summary><div class="detail-content">
+              <ul><li><b>Ectoderme:</b> sistema nervoso e epiderme.</li><li><b>Mesoderme:</b> músculos, ossos, sangue e estruturas de vários sistemas.</li><li><b>Endoderme:</b> revestimento de partes dos sistemas digestório e respiratório.</li></ul>
+              <p>Anexos embrionários: âmnio, cório, saco vitelínico e alantoide. Confira no caderno quais tópicos adicionais o professor incluiu.</p>
+            </div></details>
+          </section>
+        </div>
+      </article>
+
+      <article class="day-panel" id="quarta">
+        <div class="day-panel-head"><div><span class="day-label">QUARTA · 11/11</span><h3>Sociedade, território e população</h3></div><span class="day-index">03</span></div>
+        <div class="subject-grid">
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">HI</span><span class="subject-kind">MÓDULOS 1 A 4</span></div>
+            <h4>História · Brasil colonial e Antigo Regime</h4>
+            <p class="subject-desc">Conteúdo organizado a partir do sumário do livro enviado.</p>
+            <details open><summary>Módulo 1 · Antigo Regime e Sistema Colonial</summary><div class="detail-content"><ul><li>Definições e características do Antigo Regime.</li><li>Absolutismo: concentração do poder político na monarquia.</li><li>Mercantilismo: práticas econômicas ligadas ao fortalecimento dos Estados europeus.</li><li>Sistema colonial e colonizações: relações de domínio, exploração e comércio entre metrópoles e colônias.</li></ul></div></details>
+            <details><summary>Módulo 2 · Brasil colonial: política, economia e sociedade</summary><div class="detail-content"><ul><li>Período pré-colonial e início da colonização portuguesa.</li><li>Organização política e econômica da colônia.</li><li>Escravidão na colônia.</li><li>Sociedade açucareira e o funcionamento da produção nos engenhos.</li></ul></div></details>
+            <details><summary>Módulo 3 · Diáspora Africana e escravidão na América portuguesa</summary><div class="detail-content"><ul><li>Diáspora Africana e deslocamento forçado de populações.</li><li>Povoamento e presença africana na América portuguesa.</li><li>Trabalho nos engenhos e cotidiano da população escravizada.</li><li>Resistências, relações sociais e impactos da escravidão.</li></ul></div></details>
+            <details><summary>Módulo 4 · Expansão territorial e holandeses no Brasil colonial</summary><div class="detail-content"><ul><li>Expansão territorial da América portuguesa.</li><li>Invasões holandesas e disputas pelo controle de áreas produtoras.</li><li>União Ibérica e seu fim.</li></ul></div></details>
+            <p class="source-line">Módulos e tópicos transcritos da descrição do sumário do livro fornecida pelo estudante.</p>
+          </section>
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">GE</span><span class="subject-kind">MÓDULOS 1 E 2</span></div>
+            <h4>Geografia</h4>
+            <p class="subject-desc">Questões socioambientais e estudos populacionais.</p>
+            <details open><summary>Módulo 1 · Questões socioambientais</summary><div class="detail-content"><ul><li>Poluição da água, do ar e do solo, suas origens e consequências.</li><li>Desmatamento, queimadas e perda de biodiversidade.</li><li>Urbanização, produção, consumo e pressão sobre recursos naturais.</li><li>Desenvolvimento sustentável e uso responsável dos recursos.</li><li>Eutrofização: excesso de nutrientes favorece algas; a decomposição pode reduzir o oxigênio dissolvido.</li></ul></div></details>
+            <details><summary>Módulo 2 · Estudos populacionais</summary><div class="detail-content"><ul><li>Densidade demográfica = população ÷ área.</li><li>Crescimento vegetativo = natalidade − mortalidade.</li><li>Transição demográfica e mudanças nas taxas de natalidade e mortalidade.</li><li>Pirâmides etárias e estrutura da população.</li><li>Migrações internas e internacionais; fatores econômicos, políticos, ambientais e familiares.</li></ul></div></details>
+          </section>
+        </div>
+      </article>
+
+      <article class="day-panel" id="quinta">
+        <div class="day-panel-head"><div><span class="day-label">QUINTA · 12/11</span><h3>Reading, contexto e comunicação</h3></div><span class="day-index">04</span></div>
+        <div class="subject-grid single-grid">
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">EN</span><span class="subject-kind">LÍNGUA INGLESA · NÍVEL III</span></div>
+            <h4>Inglês</h4>
+            <p class="subject-desc">Written Test. A sistemática não especifica unidades ou estruturas gramaticais para esta prova.</p>
+            <details open><summary>Estratégia de interpretação</summary><div class="detail-content"><ol><li>Leia a pergunta antes do texto para saber o que procurar.</li><li>Identifique o gênero: notícia, anúncio, postagem, cartum, campanha, poema ou diálogo.</li><li>Procure a ideia central, o público e a finalidade.</li><li>Use cognatos com cuidado: palavras parecidas podem ter sentidos diferentes.</li><li>Observe conectivos: <i>but/however</i> (oposição), <i>because</i> (causa), <i>therefore</i> (consequência), <i>although</i> (concessão).</li><li>Interprete pelo contexto, sem tentar traduzir cada palavra isoladamente.</li></ol></div></details>
+            <details><summary>Speaking · prática geral</summary><div class="detail-content"><p>Quando precisar responder oralmente, use uma sequência simples: resposta direta + motivo + exemplo.</p><p><b>Example:</b> “I prefer studying in the morning because I feel more focused. For example, I can review before school.”</p><p>Esta é uma dica de prática geral, não uma confirmação de que Speaking faz parte da prova escrita de 12/11.</p></div></details>
+          </section>
+        </div>
+      </article>
+
+      <article class="day-panel" id="sexta">
+        <div class="day-panel-head"><div><span class="day-label">SEXTA · 13/11</span><h3>Forças, fluidos e transformações</h3></div><span class="day-index">05</span></div>
+        <div class="subject-grid">
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">FS</span><span class="subject-kind">ARQUIMEDES E ALAVANCAS</span></div>
+            <h4>Física</h4>
+            <p class="subject-desc">A sistemática registra avaliação com consulta ao caderno em 13/11, às 09h, sobre Arquimedes e alavancas.</p>
+            <details open><summary>Alavancas e torque</summary><div class="detail-content"><p>Torque é a tendência de uma força produzir rotação em torno de um eixo.</p><code class="formula-block">τ = F × d⊥</code><p><i>d⊥</i> é a distância perpendicular entre o eixo e a linha de ação da força. Em equilíbrio, os torques em sentidos opostos se compensam.</p><p>Uma força menor pode equilibrar uma maior se for aplicada a uma distância maior do apoio.</p></div></details>
+            <details><summary>Princípio de Arquimedes</summary><div class="detail-content"><p>Um corpo imerso em um fluido recebe empuxo vertical para cima, igual ao peso do fluido deslocado.</p><code class="formula-block">E = ρ × g × V<sub>deslocado</sub></code><p>Peso aparente: <code>P<sub>ap</sub> = P − E</code>. Em flutuação em equilíbrio, empuxo e peso têm mesmo módulo.</p></div></details>
+          </section>
+          <section class="subject-card">
+            <div class="subject-top"><span class="subject-icon">QU</span><span class="subject-kind">MÓDULOS 1 E 4 · AV2</span></div>
+            <h4>Química</h4>
+            <p class="subject-desc">Grandezas químicas e leis ponderais. Prova escrita, individual e sem consulta, com 10 questões discursivas.</p>
+            <details open><summary>Leis ponderais</summary><div class="detail-content"><p><b>Lavoisier:</b> em sistema fechado, a massa total se conserva durante a reação.</p><code class="formula-block">massa dos reagentes = massa dos produtos</code><p><b>Proust:</b> um composto puro apresenta proporções fixas em massa entre os elementos que o formam.</p></div></details>
+            <details><summary>Grandezas químicas</summary><div class="detail-content"><p>Confira no caderno quais grandezas foram trabalhadas nos módulos 1 e 4. Relações frequentemente estudadas incluem massa, massa molar e quantidade de matéria:</p><code class="formula-block">n = m / M</code><p>n = quantidade de matéria (mol); m = massa (g); M = massa molar (g/mol). Use apenas os tópicos efetivamente abordados em aula.</p></div></details>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="api-section section-shell" id="banco-enem">
+      <div class="api-intro">
+        <p class="eyebrow">QUESTÕES DE PROVAS ANTERIORES</p>
+        <h2>Arquivo ENEM.</h2>
+        <p>Busque questões reais do ENEM por ano e área. O acervo comunitário cobre edições de 2009 a 2023. A classificação por área é feita no navegador a partir dos dados retornados pela API.</p>
+        <div class="api-attribution"><span class="api-status-dot"></span><span>API pública · sem chave de acesso</span></div>
+        <p class="api-caution">A API não é oficial nem afiliada ao INEP. Confira a prova e o gabarito original quando precisar validar um item.</p>
+      </div>
+      <div class="api-panel">
+        <div class="api-controls">
+          <label>Ano da prova<select id="enemYear"><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020" selected>2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option></select></label>
+          <label>Área<select id="enemArea"><option value="all">Todas as áreas</option><option value="ciencias-humanas">Ciências Humanas · História/Geografia</option><option value="ciencias-natureza">Ciências da Natureza · Bio/Física/Química</option><option value="matematica">Matemática</option><option value="linguagens">Linguagens · Português/Inglês</option></select></label>
+          <label id="languageWrap" class="language-control">Idioma<select id="enemLanguage"><option value="">Todos</option><option value="ingles">Inglês</option><option value="espanhol">Espanhol</option></select></label>
+          <button class="button button-red" id="searchEnem">Buscar questões <span aria-hidden="true">↗</span></button>
+        </div>
+        <div id="apiStatus" class="api-status" role="status" aria-live="polite">Escolha o ano e a área. A consulta só acontece quando você clicar em buscar.</div>
+        <div id="enemResults" class="enem-results"></div>
+        <div class="api-footer"><a href="https://docs.enem.dev/" target="_blank" rel="noopener">Documentação da API</a><span>Cache local para evitar chamadas repetidas.</span></div>
+      </div>
+    </section>
+
+    <section class="section-shell section-block" id="treino">
+      <div class="section-heading"><div><p class="eyebrow dark-eyebrow">QUESTÕES AUTORAIS</p><h2>Treino da TI01MA</h2></div><p class="section-note">17 questões autorais para revisar os conteúdos.<br>Não são itens oficiais do ENEM.</p></div>
+      <div class="quiz-toolbar"><span id="quizProgress" aria-live="polite">0 de 17 respondidas</span><button class="button button-dark" id="gradeQuiz">Corrigir respostas</button></div>
+      <div id="localQuiz" class="local-quiz"></div>
+      <div id="quizSummary" class="quiz-summary" hidden></div>
+    </section>
+
+    <section class="section-shell section-block source-section" id="fontes">
+      <div class="section-heading"><div><p class="eyebrow dark-eyebrow">FONTES PARA IR ALÉM</p><h2>Provas e acervos</h2></div><p class="section-note">Questões antigas também treinam leitura de banca.<br>Confira sempre o ano e o gabarito.</p></div>
+      <div class="source-grid">
+        <a class="source-card" href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener"><b>INEP</b><span>Provas e gabaritos oficiais do ENEM</span><i>↗</i></a>
+        <a class="source-card" href="https://www.fuvest.br/acervo/" target="_blank" rel="noopener"><b>FUVEST</b><span>Acervo de exames e provas anteriores</span><i>↗</i></a>
+        <a class="source-card" href="https://www.comvest.unicamp.br/" target="_blank" rel="noopener"><b>COMVEST</b><span>Portal e simulados de vestibulares anteriores</span><i>↗</i></a>
+        <a class="source-card" href="https://www.vunesp.com.br/" target="_blank" rel="noopener"><b>VUNESP</b><span>Portal de vestibulares e documentos</span><i>↗</i></a>
+      </div>
+      <div class="editorial-note"><b>Sobre este guia:</b> conteúdos e datas seguem o cronograma e a sistemática enviados. O sumário do livro de História foi incorporado aos quatro módulos descritos. Quando a sistemática não especifica capítulos ou obras, o site deixa a lacuna indicada em vez de inventar conteúdo. As questões da área “Treino da TI01MA” são autorais; as questões do banco ENEM vêm da API comunitária identificada acima.</div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><span class="footer-symbol" aria-hidden="true">TI</span><b>TI01MA</b></div><span>TI01MA · 1º ano técnico em Informática · 4º bimestre de 2026</span><a href="#inicio">Voltar ao topo ↑</a></footer>
+</body>
+</html>

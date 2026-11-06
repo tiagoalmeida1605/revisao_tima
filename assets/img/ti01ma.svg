@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">TI01MA</title>
+  <rect width="64" height="64" rx="12" fill="#941a35"/>
+  <path d="M10 10h44v44H10z" fill="none" stroke="#f2dce1" stroke-opacity=".48" stroke-width="1.5"/>
+  <text x="32" y="39" fill="#fffaf8" font-family="Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">TI</text>
+  <path d="M17 46h30" stroke="#f2dce1" stroke-width="2" stroke-linecap="round"/>
+</svg>
