@@ -101,6 +101,7 @@ O arquivo `vercel.json` mantém URLs limpas e a publicação em modo estático.
 3. Crie `data/questions/<disciplina>.json` e inclua o nome do arquivo em `data/questions/manifest.json`.
 4. Registre os tópicos em `assets/js/explanations.js`. Para tópicos ainda sem material, deixe o campo `file` ausente para a interface indicar que a explicação está em preparação.
 5. Se for uma disciplina com explicações em Markdown, crie um arquivo em `content/explanations/...` e registre o caminho no tópico correspondente.
+6. Adicione em cada conteúdo uma chamada de prática para `questoes.html?materia=<slug-da-disciplina>`; os filtros aceitam o slug da disciplina.
 
 ## Como adicionar uma questão
 
@@ -180,9 +181,22 @@ f(1) = 5
 
 ## Vídeos complementares
 
-Só cadastre vídeos depois de confirmar que o vídeo existe, que o título e o canal conferem e que ele corresponde ao assunto. Os vídeos anteriormente listados foram removidos após a verificação de que os três retornavam HTTP 404. Até haver referências verificadas, a página informa que ainda não há aula em vídeo.
+Só cadastre vídeos depois de confirmar que o vídeo existe, que o título e o canal conferem e que ele corresponde ao assunto. O cadastro é feito no tópico correspondente em `assets/js/explanations.js`:
 
-Vídeos devem ser cadastrados como metadados do assunto e incorporados com `youtube-nocookie.com` e carregamento `lazy`; não reutilize um ID de exemplo ou não verificado.
+```js
+{
+  slug: 'funcoes',
+  title: 'Funções',
+  file: 'content/explanations/matematica/funcoes.md',
+  videos: [{
+    title: 'Título conferido',
+    channel: 'Canal conferido',
+    url: 'https://www.youtube.com/watch?v=ID_VERIFICADO'
+  }]
+}
+```
+
+O placeholder `ID_VERIFICADO` deve ser substituído por uma referência realmente conferida. O portal valida URLs HTTPS do YouTube e cria o embed responsivo com `youtube-nocookie.com`, `loading="lazy"` e um link para o vídeo original. Sem vídeos cadastrados e validados, a página informa que a aula ainda não foi adicionada. Os vídeos anteriormente listados foram removidos após a verificação de que os três retornavam HTTP 404.
 
 ## Como substituir o logo e o símbolo
 
@@ -205,7 +219,7 @@ Os caminhos Raven Study e Raven Tech apontam para as imagens existentes em `asse
 
 ## Como configurar os temas
 
-O tema é gerenciado por `assets/js/theme.js` e salvo no `localStorage` com as chaves:
+O tema é gerenciado por `assets/js/theme.js`, carregado no início do `<head>` para aplicar a preferência antes da renderização dos estilos, e salvo no `localStorage` com as chaves:
 
 ```js
 localStorage.setItem('ti01ma-theme', 'dark');
@@ -225,7 +239,7 @@ As bibliotecas usadas em `assets/vendor/` possuem versões e referências docume
 
 O acervo atual tem 17 questões autorais migradas da versão anterior, organizadas por disciplina. Cada item preserva o enunciado, as alternativas, o gabarito e o comentário de origem. Metadados de ano, instituição ou fonte não são preenchidos sem comprovação. O simulador limita a sessão ao total realmente disponível após os filtros e não duplica itens.
 
-A central de explicações tem materiais Markdown para Matemática (Funções e Matrizes), Português (Interpretação textual) e História (Diáspora africana). Os demais tópicos correspondentes ao cronograma aparecem como em preparação. Não há vídeos cadastrados atualmente; referências antigas foram removidas após retornarem HTTP 404.
+A central de explicações tem materiais Markdown para Matemática (Funções e Matrizes), Português (Interpretação textual) e História (Diáspora africana). Os demais 14 tópicos correspondentes ao cronograma aparecem como em preparação. Não há vídeos cadastrados atualmente; referências antigas foram removidas após retornarem HTTP 404.
 
 ## Validação
 

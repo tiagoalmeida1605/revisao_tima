@@ -88,6 +88,29 @@
     populateSelect('questionDifficulty', filters.difficulty, state.pool.map((question) => question.dificuldade));
   }
 
+  function applyUrlFilters() {
+    const params = new URLSearchParams(window.location.search);
+    const subjectSlug = params.get('materia');
+    const topicSlug = params.get('topico');
+    const slug = (value) => value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('pt-BR')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    if (subjectSlug) {
+      const option = [...document.getElementById('questionSubject').options]
+        .find((item) => item.value !== filters.subject && slug(item.value) === subjectSlug);
+      if (option) document.getElementById('questionSubject').value = option.value;
+    }
+    if (topicSlug) {
+      const option = [...document.getElementById('questionTopic').options]
+        .find((item) => item.value !== filters.topic && slug(item.value) === topicSlug);
+      if (option) document.getElementById('questionTopic').value = option.value;
+    }
+  }
+
   function getFilters() {
     return {
       subject: document.getElementById('questionSubject')?.value || filters.subject,
@@ -301,6 +324,7 @@
     try {
       state.pool = await window.TI01MA_QUESTION_DATA.loadQuestions();
       populateFilters();
+      applyUrlFilters();
       setStatus(`Banco carregado: ${state.pool.length} questão(ões) disponíveis.`);
     } catch (error) {
       showLoadError(error);
