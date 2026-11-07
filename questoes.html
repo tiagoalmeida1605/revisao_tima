@@ -7,10 +7,11 @@
     <meta name="theme-color" content="#f3ecdf" id="themeColorMeta">
     <meta name="description" content="Banco local de questões do 1TIMA com simulados por disciplina e origem.">
     <title>Questões | 1TIMA</title>
-    <link rel="icon" href="assets/img/brand/1tima-raven-symbol.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/img/ti01ma.svg" type="image/svg+xml">
     <script src="assets/js/brand-config.js"></script>
     <script src="assets/js/theme.js" defer></script>
     <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/question-data.js" defer></script>
     <script src="assets/js/questions.js" defer></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/questions.css">
@@ -22,9 +23,7 @@
     <div class="top-stripe" aria-hidden="true"></div>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Página inicial do 1TIMA">
-        <span class="brand-mark" aria-hidden="true">
-          <img data-brand-logo data-alt="Logo 1TIMA" src="" alt="Logo 1TIMA" hidden>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-text">1TIMA</span></span>
         <span class="brand-copy"><strong>1<span>TIMA</span></strong><small>guia de estudos · ti01ma</small></span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
@@ -85,6 +84,10 @@
             <div class="field">
               <label for="questionYear">Ano</label>
               <select id="questionYear"></select>
+            </div>
+            <div class="field">
+              <label for="questionTopic">Assunto</label>
+              <select id="questionTopic"></select>
             </div>
             <div class="field">
               <label for="questionDifficulty">Dificuldade</label>

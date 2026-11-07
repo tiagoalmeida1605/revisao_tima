@@ -7,10 +7,11 @@
     <meta name="theme-color" content="#f3ecdf" id="themeColorMeta">
     <meta name="description" content="Portal de estudos do 1TIMA para a turma TI01MA.">
     <title>1TIMA | Guia de Estudos</title>
-    <link rel="icon" href="assets/img/brand/1tima-raven-symbol.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/img/ti01ma.svg" type="image/svg+xml">
     <script src="assets/js/brand-config.js"></script>
     <script src="assets/js/theme.js" defer></script>
     <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/question-data.js" defer></script>
     <script src="assets/js/home.js" defer></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/pages.css">
@@ -21,9 +22,7 @@
     <div class="top-stripe" aria-hidden="true"></div>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Página inicial do 1TIMA">
-        <span class="brand-mark" aria-hidden="true">
-          <img data-brand-logo data-alt="Logo 1TIMA" src="" alt="Logo 1TIMA" hidden>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><span class="brand-mark-text">1TIMA</span></span>
         <span class="brand-copy"><strong>1<span>TIMA</span></strong><small>guia de estudos · ti01ma</small></span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
@@ -65,8 +64,8 @@
               <span>disciplinas</span>
             </div>
             <div class="hero-stat">
-              <strong>15+</strong>
-              <span>questões locais</span>
+              <strong id="homeQuestionCount">—</strong>
+              <span id="homeQuestionLabel">questões no banco local</span>
             </div>
           </div>
         </div>
@@ -178,6 +177,10 @@
             <p class="hero-lead">As informações são preservadas em páginas dedicadas para garantir transparência e reduzir a chance de confusão entre material oficial e material autoral.</p>
             <a class="button button-muted" href="fontes.html">Ver fontes</a>
           </article>
+        </div>
+        <div class="tech-raven-note">
+          <img data-raven-tech data-alt="Mascote Raven #27 Tech" src="" alt="Mascote Raven #27 Tech" hidden>
+          <p><strong>Raven #27 · Tech</strong><br>Identidade visual da trilha de informática.</p>
         </div>
       </section>
     </main>

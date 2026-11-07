@@ -1,20 +1,20 @@
 [
   {
-    "id": "ing-001",
+    "id": "ingles-connectors-01",
     "materia": "Inglês",
-    "assunto": "Conectores",
-    "dificuldade": "facil",
+    "assunto": "Connectors",
+    "dia": "Quinta · 12/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "O termo 'however' em 'Many students use public transport. However, buses can be crowded during rush hour' indica:",
-    "alternativas": [{"id":"A","texto":"adição"},{"id":"B","texto":"causa"},{"id":"C","texto":"contraste"},{"id":"D","texto":"tempo"},{"id":"E","texto":"finalidade"}],
+    "enunciado": "Read: “Many students use public transport. However, buses can be crowded during rush hour.” The word “However” expresses:",
+    "alternativas": [
+      { "id": "A", "texto": "addition" },
+      { "id": "B", "texto": "cause" },
+      { "id": "C", "texto": "contrast" },
+      { "id": "D", "texto": "purpose" },
+      { "id": "E", "texto": "time" }
+    ],
     "respostaCorreta": "C",
-    "explicacao": "'However' introduz uma ideia de contraste, que é equivalente a 'porém'.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "“However” indica contraste, como “entretanto” ou “porém”."
   }
 ]

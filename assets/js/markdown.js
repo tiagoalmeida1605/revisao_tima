@@ -4,15 +4,16 @@
   window.TI01MA_MARKDOWN = {
     render(content) {
       if (!content) return '';
-      if (window.marked && typeof window.marked.parse === 'function') {
-        const html = window.marked.parse(content, { breaks: true, gfm: true });
-        return window.DOMPurify ? DOMPurify.sanitize(html) : html;
+      if (!window.marked || typeof window.marked.parse !== 'function') {
+        throw new Error('A biblioteca Marked não está disponível.');
       }
-      return content
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\n/g, '<br>');
+      if (!window.DOMPurify || typeof window.DOMPurify.sanitize !== 'function') {
+        throw new Error('A biblioteca DOMPurify não está disponível.');
+      }
+
+      return window.DOMPurify.sanitize(
+        window.marked.parse(content, { breaks: true, gfm: true })
+      );
     }
   };
 })();

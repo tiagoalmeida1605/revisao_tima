@@ -118,6 +118,48 @@
   color: var(--color-burgundy);
 }
 
+.explanation-pending {
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.explanation-links {
+  display: grid;
+  justify-items: start;
+  gap: 0.55rem;
+}
+
+.tech-raven-note {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text-secondary);
+}
+
+.tech-raven-note img {
+  width: 4.25rem;
+  height: 4.25rem;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.tech-raven-note strong {
+  color: var(--color-text-primary);
+}
+
+.tech-raven-note .raven-fallback {
+  width: 4.25rem;
+  height: 4.25rem;
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+}
+
 .portal-grid,
 .quick-grid,
 .schedule-grid,

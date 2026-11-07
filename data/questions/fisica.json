@@ -1,20 +1,38 @@
 [
   {
-    "id": "fis-001",
+    "id": "fisica-alavanca-01",
     "materia": "Física",
     "assunto": "Alavancas",
-    "dificuldade": "media",
+    "dia": "Sexta · 13/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "Uma força de 40 N atua a 0,5 m do eixo de rotação. Para equilibrar a alavanca, uma força de F atua a 2 m do eixo no lado oposto. O valor de F é:",
-    "alternativas": [{"id":"A","texto":"5 N"},{"id":"B","texto":"10 N"},{"id":"C","texto":"20 N"},{"id":"D","texto":"40 N"},{"id":"E","texto":"80 N"}],
+    "enunciado": "Uma força de 40 N atua a 0,5 m do apoio de uma alavanca. Qual força, aplicada a 2 m do apoio no lado oposto, equilibra o sistema?",
+    "alternativas": [
+      { "id": "A", "texto": "5 N" },
+      { "id": "B", "texto": "10 N" },
+      { "id": "C", "texto": "20 N" },
+      { "id": "D", "texto": "40 N" },
+      { "id": "E", "texto": "80 N" }
+    ],
     "respostaCorreta": "B",
-    "explicacao": "Momento 1 = 40 × 0,5 = 20. O momento 2 deve ser igual: F × 2 = 20, então F = 10 N.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "Equilíbrio de torques: 40 × 0,5 = F × 2. Então 20 = 2F e F = 10 N."
+  },
+  {
+    "id": "fisica-empuxo-01",
+    "materia": "Física",
+    "assunto": "Empuxo",
+    "dia": "Sexta · 13/11",
+    "origem": "AUTORAL",
+    "tipo": "autoral",
+    "enunciado": "Um corpo desloca 0,003 m³ de água. Considere ρ = 1.000 kg/m³ e g = 10 m/s². Qual é o empuxo?",
+    "alternativas": [
+      { "id": "A", "texto": "3 N" },
+      { "id": "B", "texto": "10 N" },
+      { "id": "C", "texto": "30 N" },
+      { "id": "D", "texto": "300 N" },
+      { "id": "E", "texto": "3.000 N" }
+    ],
+    "respostaCorreta": "C",
+    "explicacao": "E = ρ × g × V = 1.000 × 10 × 0,003 = 30 N."
   }
 ]

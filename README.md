@@ -33,6 +33,7 @@ O projeto foi reestruturado para funcionar como um guia de estudos profissional,
 │   │   ├── brand-config.js
 │   │   ├── theme.js
 │   │   ├── navigation.js
+│   │   ├── question-data.js
 │   │   ├── home.js
 │   │   ├── agenda.js
 │   │   ├── materias.js
@@ -55,6 +56,7 @@ O projeto foi reestruturado para funcionar como um guia de estudos profissional,
 │       └── historia/
 ├── data/
 │   └── questions/
+│       ├── manifest.json
 │       ├── matematica.json
 │       ├── portugues.json
 │       ├── literatura.json
@@ -64,7 +66,6 @@ O projeto foi reestruturado para funcionar como um guia de estudos profissional,
 │       ├── fisica.json
 │       ├── quimica.json
 │       └── ingles.json
-└── .
 ```
 
 ## Como executar localmente
@@ -97,8 +98,9 @@ O arquivo `vercel.json` mantém URLs limpas e a publicação em modo estático.
 
 1. Atualize a navegação e o resumo da página inicial, se necessário.
 2. Acrescente a nova disciplina na página `materias.html`.
-3. Registre a disciplina dentro do filtro do simulador em `assets/js/questions.js`, caso precise de novas entradas de banco.
-4. Se for uma disciplina com explicações em Markdown, crie o arquivo em `content/explanations/...` e registre o tema em `assets/js/explanations.js`.
+3. Crie `data/questions/<disciplina>.json` e inclua o nome do arquivo em `data/questions/manifest.json`.
+4. Registre os tópicos em `assets/js/explanations.js`. Para tópicos ainda sem material, deixe o campo `file` ausente para a interface indicar que a explicação está em preparação.
+5. Se for uma disciplina com explicações em Markdown, crie um arquivo em `content/explanations/...` e registre o caminho no tópico correspondente.
 
 ## Como adicionar uma questão
 
@@ -110,28 +112,24 @@ O arquivo `vercel.json` mantém URLs limpas e a publicação em modo estático.
   "id": "mat-103",
   "materia": "Matemática",
   "assunto": "Funções",
-  "dificuldade": "media",
   "origem": "AUTORAL",
-  "instituicao": "TI01MA",
-  "ano": 2026,
-  "numero": 10,
   "tipo": "autoral",
   "enunciado": "Texto da questão",
   "alternativas": [
     { "id": "A", "texto": "Alternativa A" },
     { "id": "B", "texto": "Alternativa B" },
     { "id": "C", "texto": "Alternativa C" },
-    { "id": "D", "texto": "Alternativa D" }
+    { "id": "D", "texto": "Alternativa D" },
+    { "id": "E", "texto": "Alternativa E" }
   ],
   "respostaCorreta": "C",
-  "explicacao": "Explicação da alternativa correta.",
-  "fonteUrl": "https://example.com",
-  "statusRevisao": "revisada",
-  "licenca": "autoral"
+  "explicacao": "Explicação da alternativa correta."
 }
 ```
 
-3. Use somente materiais próprios ou licenças adequadas; nunca invente questões como se fossem provas oficiais.
+3. Mantenha `origem` como `AUTORAL` para conteúdo autoral. Não informe instituição, ano, número ou URL de fonte quando esses dados não forem comprovados.
+4. Inclua cada novo arquivo no `data/questions/manifest.json`. O carregador valida IDs únicos, campos, alternativas e gabarito.
+5. Os simulados mostram apenas itens realmente cadastrados; não duplique questões para alcançar uma quantidade mínima.
 
 ## Como cadastrar uma fonte
 
@@ -155,11 +153,11 @@ Use `target="_blank"` e `rel="noopener noreferrer"` em todos os links externos.
 1. Crie a pasta da disciplina em `content/explanations/`.
 2. Adicione o arquivo `.md` com conteúdo em Markdown.
 3. Registre a página em `assets/js/explanations.js` com `slug`, `title` e `file`.
-4. Opcionalmente, adicione vídeos em `videos`.
+4. Para assuntos ainda não disponíveis, registre apenas o tópico sem arquivo Markdown; a central mostrará “explicação em preparação”.
 
-Exemplo de arquivo:
+Exemplo de arquivo (as quatro crases externas preservam o bloco de código Markdown interno):
 
-```md
+````md
 # Funções
 
 ## Introdução
@@ -178,40 +176,32 @@ Uma função relaciona cada valor de entrada com um único valor de saída.
 f(x) = 2x + 3
 f(1) = 5
 ```
-```
+````
 
-## Como cadastrar um vídeo
+## Vídeos complementares
 
-Cada explicação pode incluir uma lista de vídeos em metadados do arquivo JavaScript. A embed usa `youtube-nocookie.com` com carregamento lazy e a URL do vídeo é montada pelo script.
+Só cadastre vídeos depois de confirmar que o vídeo existe, que o título e o canal conferem e que ele corresponde ao assunto. Os vídeos anteriormente listados foram removidos após a verificação de que os três retornavam HTTP 404. Até haver referências verificadas, a página informa que ainda não há aula em vídeo.
 
-Exemplo:
+Vídeos devem ser cadastrados como metadados do assunto e incorporados com `youtube-nocookie.com` e carregamento `lazy`; não reutilize um ID de exemplo ou não verificado.
 
-```js
-videos: [{
-  title: 'Funções e gráficos',
-  channel: 'Mundo da Matemática',
-  id: 'bgmH0Z5qVb8'
-}]
-```
+## Como substituir o logo e o símbolo
 
-## Como substituir o logo
-
-O caminho do logo principal está centralizado em `assets/js/brand-config.js`.
+Os campos de logo e símbolo estão preparados em `assets/js/brand-config.js` para quando os arquivos individuais oficiais forem adicionados. Eles não apontam para a prancha completa; enquanto os arquivos individuais não existem, a marca é exibida em texto e o favicon usa o arquivo existente `assets/img/ti01ma.svg`.
 
 ```js
 window.TI01MA_BRAND = {
   logo: 'assets/img/brand/1tima-logo-horizontal.svg',
   symbol: 'assets/img/brand/1tima-raven-symbol.svg',
-  ravenStudy: 'assets/img/mascots/raven-27-study.png',
-  ravenTech: 'assets/img/mascots/raven-27-tech.png'
+  ravenStudy: 'assets/img/Studious Canada Raccoon at Desk.png',
+  ravenTech: 'assets/img/Focused Raccoon Tech Study Mascot.png'
 };
 ```
 
-Se os arquivos não existirem, o portal usa uma alternativa tipográfica em vez de quebrar a interface.
+Não substitua esses caminhos por uma imagem genérica ou pela prancha com várias marcas. Se o logo individual não existir, mantenha a alternativa tipográfica 1TIMA.
 
 ## Como substituir as imagens do Raven
 
-Também ficam centralizadas em `assets/js/brand-config.js`. O script verifica se o arquivo existe antes de carregar. Caso o arquivo esteja ausente, o sistema usa um fallback textual sem expor imagem quebrada no layout.
+Os caminhos Raven Study e Raven Tech apontam para as imagens existentes em `assets/img/` e ficam centralizados em `assets/js/brand-config.js`. O script verifica cada imagem antes de exibi-la; se um arquivo faltar, usa uma alternativa textual discreta e não deixa ícone quebrado.
 
 ## Como configurar os temas
 
@@ -225,18 +215,18 @@ A aplicação respeita `prefers-color-scheme` na primeira visita e mantém o mod
 
 ## Marcação e sanitização de Markdown
 
-A renderização usa `marked` para converter o conteúdo e `DOMPurify` para sanitizar a saída HTML. Os arquivos da biblioteca local são carregados de `assets/vendor/` e não dependem de CDN para funcionar em produção.
+A renderização usa `marked` para converter o conteúdo e `DOMPurify` para sanitizar a saída HTML antes de inseri-la no DOM. As bibliotecas são carregadas de `assets/vendor/`; se uma delas não carregar, o conteúdo HTML não é inserido. Os dados das questões são renderizados como texto, nunca interpretados como HTML.
 
 ## Licenças e dependências locais
 
 As bibliotecas usadas em `assets/vendor/` possuem versões e referências documentadas em `assets/vendor/LICENSES.md`.
 
+## Estado do acervo e conteúdos
+
+O acervo atual tem 17 questões autorais migradas da versão anterior, organizadas por disciplina. Cada item preserva o enunciado, as alternativas, o gabarito e o comentário de origem. Metadados de ano, instituição ou fonte não são preenchidos sem comprovação. O simulador limita a sessão ao total realmente disponível após os filtros e não duplica itens.
+
+A central de explicações tem materiais Markdown para Matemática (Funções e Matrizes), Português (Interpretação textual) e História (Diáspora africana). Os demais tópicos correspondentes ao cronograma aparecem como em preparação. Não há vídeos cadastrados atualmente; referências antigas foram removidas após retornarem HTTP 404.
+
 ## Validação
 
-Antes de finalizar,
-
-- revise todos os HTMLs para links e caminhos corretos;
-- confirme que as páginas carregam em servidor HTTP;
-- valide sintaxe JavaScript com `node --check`;
-- confirme que o acervo local de questões funciona sem API externa;
-- teste o tema claro/escuro e o layout mobile.
+Antes de finalizar alterações, valide JSON, JavaScript, URLs internas, anchors, caminhos de assets e IDs duplicados. Compare questões e gabaritos com as fontes de origem e confirme que os resultados não contêm duplicações. Teste o banco local, a renderização sanitizada do Markdown e as páginas em larguras mobile. Não marque uma verificação como aprovada sem executá-la.

@@ -1,38 +1,38 @@
 [
   {
-    "id": "mat-001",
+    "id": "matematica-reta-01",
     "materia": "Matemática",
-    "assunto": "Funções",
-    "dificuldade": "media",
+    "assunto": "Geometria analítica",
+    "dia": "Terça · 10/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "Considere a função f(x) = 2x + 3. Qual é o valor de f(4)?",
-    "alternativas": [{"id":"A","texto":"7"},{"id":"B","texto":"9"},{"id":"C","texto":"11"},{"id":"D","texto":"13"},{"id":"E","texto":"15"}],
-    "respostaCorreta": "C",
-    "explicacao": "Substituindo x por 4: 2·4 + 3 = 11.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "enunciado": "A reta passa pelos pontos (1, 2) e (4, 8). Qual é sua equação reduzida?",
+    "alternativas": [
+      { "id": "A", "texto": "y = x + 1" },
+      { "id": "B", "texto": "y = 2x" },
+      { "id": "C", "texto": "y = 3x − 1" },
+      { "id": "D", "texto": "y = 2x + 1" },
+      { "id": "E", "texto": "y = −2x + 4" }
+    ],
+    "respostaCorreta": "B",
+    "explicacao": "m = (8−2)/(4−1) = 2. Substituindo (1,2) em y = mx + n: 2 = 2 + n, então n = 0. Logo, y = 2x."
   },
   {
-    "id": "mat-002",
+    "id": "matematica-amplitude-01",
     "materia": "Matemática",
-    "assunto": "Estatística",
-    "dificuldade": "facil",
-    "origem": "VUNESP",
-    "instituicao": "UNESP",
-    "ano": 2024,
-    "numero": 2,
+    "assunto": "Medidas de variabilidade",
+    "dia": "Terça · 10/11",
+    "origem": "AUTORAL",
     "tipo": "autoral",
-    "enunciado": "A amplitude de 3, 5, 7 e 9 é:",
-    "alternativas": [{"id":"A","texto":"2"},{"id":"B","texto":"4"},{"id":"C","texto":"6"},{"id":"D","texto":"7"},{"id":"E","texto":"9"}],
+    "enunciado": "Considere os dados 3, 5, 7 e 9. Qual é a amplitude?",
+    "alternativas": [
+      { "id": "A", "texto": "3" },
+      { "id": "B", "texto": "4" },
+      { "id": "C", "texto": "6" },
+      { "id": "D", "texto": "7" },
+      { "id": "E", "texto": "9" }
+    ],
     "respostaCorreta": "C",
-    "explicacao": "Amplitude = maior valor − menor valor = 9 − 3 = 6.",
-    "fonteUrl": "https://www.vunesp.com.br/",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "Amplitude = maior valor − menor valor = 9 − 3 = 6."
   }
 ]

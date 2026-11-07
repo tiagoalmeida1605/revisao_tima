@@ -1,0 +1,13 @@
+{
+  "files": [
+    "matematica.json",
+    "portugues.json",
+    "literatura.json",
+    "biologia.json",
+    "historia.json",
+    "geografia.json",
+    "ingles.json",
+    "fisica.json",
+    "quimica.json"
+  ]
+}

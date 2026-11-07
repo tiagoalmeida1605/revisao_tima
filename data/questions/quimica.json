@@ -1,20 +1,20 @@
 [
   {
-    "id": "qui-001",
+    "id": "quimica-conservacao-massas-01",
     "materia": "Química",
-    "assunto": "Lei de conservação das massas",
-    "dificuldade": "facil",
+    "assunto": "Lei de Lavoisier",
+    "dia": "Sexta · 13/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "Em um sistema fechado, 12 g de carbono reagem com 32 g de oxigênio. Qual a massa total do produto?",
-    "alternativas": [{"id":"A","texto":"12 g"},{"id":"B","texto":"20 g"},{"id":"C","texto":"32 g"},{"id":"D","texto":"44 g"},{"id":"E","texto":"52 g"}],
+    "enunciado": "Em um sistema fechado, 12 g de carbono reagem com 32 g de oxigênio. Pela lei de Lavoisier, qual massa total de produto é formada?",
+    "alternativas": [
+      { "id": "A", "texto": "12 g" },
+      { "id": "B", "texto": "20 g" },
+      { "id": "C", "texto": "32 g" },
+      { "id": "D", "texto": "44 g" },
+      { "id": "E", "texto": "384 g" }
+    ],
     "respostaCorreta": "D",
-    "explicacao": "Pela lei de Lavoisier, a massa total dos reagentes é igual à massa total dos produtos: 12 + 32 = 44 g.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "A massa se conserva: 12 g + 32 g = 44 g de produto."
   }
 ]

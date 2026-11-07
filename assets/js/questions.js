@@ -1,265 +1,329 @@
 (function () {
   'use strict';
 
-  const questionFiles = [
-    'matematica',
-    'portugues',
-    'literatura',
-    'biologia',
-    'historia',
-    'geografia',
-    'fisica',
-    'quimica',
-    'ingles'
-  ];
+  const filters = {
+    subject: 'Todas as disciplinas',
+    source: 'Todas as origens',
+    institution: 'Todas as instituições',
+    year: 'Todos os anos',
+    topic: 'Todos os assuntos',
+    difficulty: 'Todas as dificuldades'
+  };
 
-  const questionState = {
+  const state = {
     pool: [],
     selected: [],
     currentIndex: 0,
-    answers: new Map(),
-    result: null
+    answers: new Map()
   };
 
   function fisherYates(items) {
-    const copy = [...items];
-    for (let idx = copy.length - 1; idx > 0; idx -= 1) {
-      const randomIndex = Math.floor(Math.random() * (idx + 1));
-      [copy[idx], copy[randomIndex]] = [copy[randomIndex], copy[idx]];
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
     }
-    return copy;
+    return shuffled;
   }
 
-  function parseNumber(value, fallback) {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : fallback;
+  function byBalancedTopics(items) {
+    const topics = new Map();
+    fisherYates(items).forEach((question) => {
+      const topic = question.assunto || 'Sem assunto';
+      if (!topics.has(topic)) topics.set(topic, []);
+      topics.get(topic).push(question);
+    });
+
+    const topicNames = fisherYates([...topics.keys()]);
+    const balanced = [];
+    while (topicNames.some((topic) => topics.get(topic).length > 0)) {
+      topicNames.forEach((topic) => {
+        const question = topics.get(topic).pop();
+        if (question) balanced.push(question);
+      });
+    }
+    return balanced;
   }
 
-  async function loadQuestionPool() {
-    const results = await Promise.all(questionFiles.map(async (file) => {
-      const response = await fetch(`data/questions/${file}.json`, { cache: 'no-store' });
-      if (!response.ok) {
-        throw new Error(`Não foi possível carregar ${file}.json`);
-      }
-      return response.json();
-    }));
-    questionState.pool = results.flat();
-    populateFilters();
+  function textElement(tagName, text, className) {
+    const element = document.createElement(tagName);
+    element.textContent = text;
+    if (className) element.className = className;
+    return element;
+  }
+
+  function toSlug(value) {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('pt-BR')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  function appendOption(select, value, label) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    select.appendChild(option);
+  }
+
+  function populateSelect(elementId, defaultLabel, values) {
+    const select = document.getElementById(elementId);
+    if (!select) return;
+
+    select.replaceChildren();
+    appendOption(select, defaultLabel, defaultLabel);
+    [...new Set(values.filter((value) => value !== undefined && value !== null && value !== ''))]
+      .sort((first, second) => String(first).localeCompare(String(second), 'pt-BR', { numeric: true }))
+      .forEach((value) => appendOption(select, String(value), String(value)));
   }
 
   function populateFilters() {
-    const subjectFilter = document.getElementById('questionSubject');
-    const sourceFilter = document.getElementById('questionSource');
-    const institutionFilter = document.getElementById('questionInstitution');
-    const yearFilter = document.getElementById('questionYear');
-    const difficultyFilter = document.getElementById('questionDifficulty');
-
-    if (!subjectFilter || !sourceFilter || !institutionFilter || !yearFilter || !difficultyFilter) return;
-
-    const subjects = [...new Set(questionState.pool.map((question) => question.materia).filter(Boolean))].sort();
-    const sources = [...new Set(questionState.pool.map((question) => question.origem).filter(Boolean))].sort();
-    const institutions = [...new Set(questionState.pool.map((question) => question.instituicao).filter(Boolean))].sort();
-    const years = [...new Set(questionState.pool.map((question) => parseNumber(question.ano, 0)).filter((year) => year > 0))].sort((a, b) => a - b);
-    const difficulties = [...new Set(questionState.pool.map((question) => question.dificuldade).filter(Boolean))].sort();
-
-    buildSelect(subjectFilter, ['Todas as disciplinas', ...subjects], 'Todas as disciplinas');
-    buildSelect(sourceFilter, ['Todas as origens', ...sources], 'Todas as origens');
-    buildSelect(institutionFilter, ['Todas as instituições', ...institutions], 'Todas as instituições');
-    buildSelect(yearFilter, ['Todos os anos', ...years.map(String)], 'Todos os anos');
-    buildSelect(difficultyFilter, ['Todas as dificuldades', ...difficulties], 'Todas as dificuldades');
-  }
-
-  function buildSelect(selectElement, options, defaultValue) {
-    selectElement.innerHTML = options.map((option) => {
-      const value = typeof option === 'string' ? option : option.value;
-      const label = typeof option === 'string' ? option : option.label;
-      const selected = value === defaultValue ? 'selected' : '';
-      return `<option value="${value}" ${selected}>${label}</option>`;
-    }).join('');
+    populateSelect('questionSubject', filters.subject, state.pool.map((question) => question.materia));
+    populateSelect('questionSource', filters.source, state.pool.map((question) => question.origem));
+    populateSelect('questionInstitution', filters.institution, state.pool.map((question) => question.instituicao));
+    populateSelect('questionYear', filters.year, state.pool.map((question) => question.ano));
+    populateSelect('questionTopic', filters.topic, state.pool.map((question) => question.assunto));
+    populateSelect('questionDifficulty', filters.difficulty, state.pool.map((question) => question.dificuldade));
   }
 
   function getFilters() {
     return {
-      subject: document.getElementById('questionSubject')?.value || 'Todas as disciplinas',
-      source: document.getElementById('questionSource')?.value || 'Todas as origens',
-      institution: document.getElementById('questionInstitution')?.value || 'Todas as instituições',
-      year: document.getElementById('questionYear')?.value || 'Todos os anos',
-      difficulty: document.getElementById('questionDifficulty')?.value || 'Todas as dificuldades',
-      quantity: parseNumber(document.getElementById('questionQuantity')?.value || '15', 15)
+      subject: document.getElementById('questionSubject')?.value || filters.subject,
+      source: document.getElementById('questionSource')?.value || filters.source,
+      institution: document.getElementById('questionInstitution')?.value || filters.institution,
+      year: document.getElementById('questionYear')?.value || filters.year,
+      topic: document.getElementById('questionTopic')?.value || filters.topic,
+      difficulty: document.getElementById('questionDifficulty')?.value || filters.difficulty,
+      quantity: Number(document.getElementById('questionQuantity')?.value || 15)
     };
   }
 
-  function matchesFilters(question, filters) {
-    if (filters.subject !== 'Todas as disciplinas' && question.materia !== filters.subject) return false;
-    if (filters.source !== 'Todas as origens' && question.origem !== filters.source) return false;
-    if (filters.institution !== 'Todas as instituições' && question.instituicao !== filters.institution) return false;
-    if (filters.year !== 'Todos os anos' && String(question.ano) !== String(filters.year)) return false;
-    if (filters.difficulty !== 'Todas as dificuldades' && question.dificuldade !== filters.difficulty) return false;
-    return true;
+  function matchesFilters(question, selectedFilters) {
+    return (selectedFilters.subject === filters.subject || question.materia === selectedFilters.subject)
+      && (selectedFilters.source === filters.source || question.origem === selectedFilters.source)
+      && (selectedFilters.institution === filters.institution || question.instituicao === selectedFilters.institution)
+      && (selectedFilters.year === filters.year || String(question.ano) === selectedFilters.year)
+      && (selectedFilters.topic === filters.topic || question.assunto === selectedFilters.topic)
+      && (selectedFilters.difficulty === filters.difficulty || question.dificuldade === selectedFilters.difficulty);
   }
 
-  function renderQuestionCard(question, index, total) {
+  function setStatus(message) {
+    const status = document.getElementById('countWarning');
+    if (status) status.textContent = message;
+  }
+
+  function renderQuestion(question) {
     const container = document.getElementById('simulationStage');
     if (!container) return;
 
-    const answerValue = questionState.answers.get(question.id) || '';
-    const progress = ((index + 1) / total) * 100;
+    const currentNumber = state.currentIndex + 1;
+    const progress = (currentNumber / state.selected.length) * 100;
+    const card = document.createElement('section');
+    card.className = 'simulation-card';
+    card.setAttribute('aria-labelledby', 'currentQuestion');
 
-    container.innerHTML = `
-      <div class="simulation-card">
-        <div class="simulation-header">
-          <div class="question-meta">
-            <span class="badge">Questão ${index + 1}/${total}</span>
-            <span class="mini-note">${question.materia} · ${question.origem}</span>
-          </div>
-          <span class="mini-note">Disponíveis: ${questionState.selected.length}</span>
-        </div>
-        <div class="progress-bar" aria-label="Progresso do simulado">
-          <span class="progress-fill" style="width:${progress}%"></span>
-        </div>
-        <div class="question-surface">
-          <h3>${question.enunciado}</h3>
-          <div class="option-list">
-            ${(question.alternativas || []).map((option) => {
-              const isSelected = answerValue === option.id;
-              const classes = isSelected ? 'option-item selected' : 'option-item';
-              return `
-                <button type="button" class="${classes}" data-option-id="${option.id}" data-question-id="${question.id}">
-                  <span>${option.id}</span>
-                  <span>${option.texto}</span>
-                </button>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      </div>
-    `;
+    const header = document.createElement('div');
+    header.className = 'simulation-header';
+    const metadata = document.createElement('div');
+    metadata.className = 'question-meta';
+    metadata.append(
+      textElement('span', `Questão ${currentNumber}/${state.selected.length}`, 'badge'),
+      textElement('span', `${question.materia} · ${question.origem}`, 'mini-note')
+    );
+    header.append(metadata, textElement('span', `Disponíveis: ${state.selected.length}`, 'mini-note'));
 
-    container.querySelectorAll('[data-option-id]').forEach((button) => {
+    const progressTrack = document.createElement('div');
+    progressTrack.className = 'progress-bar';
+    progressTrack.setAttribute('role', 'progressbar');
+    progressTrack.setAttribute('aria-label', 'Progresso do simulado');
+    progressTrack.setAttribute('aria-valuemin', '0');
+    progressTrack.setAttribute('aria-valuemax', String(state.selected.length));
+    progressTrack.setAttribute('aria-valuenow', String(currentNumber));
+    const progressFill = document.createElement('span');
+    progressFill.className = 'progress-fill';
+    progressFill.style.width = `${progress}%`;
+    progressTrack.appendChild(progressFill);
+
+    const surface = document.createElement('div');
+    surface.className = 'question-surface';
+    surface.appendChild(textElement('h3', question.enunciado, 'question-prompt'));
+    const options = document.createElement('div');
+    options.className = 'option-list';
+    options.setAttribute('role', 'group');
+    options.setAttribute('aria-label', 'Alternativas');
+
+    question.alternativas.forEach((option) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `option-item${state.answers.get(question.id) === option.id ? ' selected' : ''}`;
+      button.setAttribute('aria-pressed', String(state.answers.get(question.id) === option.id));
+      button.append(textElement('span', option.id), textElement('span', option.texto));
       button.addEventListener('click', () => {
-        questionState.answers.set(question.id, button.dataset.optionId);
-        renderQuestionCard(question, index, total);
+        state.answers.set(question.id, option.id);
+        renderQuestion(question);
       });
+      options.appendChild(button);
     });
+    surface.appendChild(options);
+    card.append(header, progressTrack, surface);
+    container.replaceChildren(card);
+  }
+
+  function appendReview(reviewList, question, index) {
+    const selectedAnswer = state.answers.get(question.id);
+    const correct = selectedAnswer === question.respostaCorreta;
+    const review = document.createElement('article');
+    review.className = `review-item ${correct ? 'correct' : 'incorrect'}`;
+    const top = document.createElement('div');
+    top.className = 'review-top';
+    top.append(
+      textElement('strong', `Questão ${index + 1}`),
+      textElement('span', correct ? 'Acertou' : 'Errou')
+    );
+    review.append(
+      top,
+      textElement('p', `Resposta do aluno: ${selectedAnswer || 'Não respondida'}`),
+      textElement('p', `Gabarito: ${question.respostaCorreta}`),
+      textElement('p', question.explicacao)
+    );
+
+    if (question.materia && question.assunto) {
+      const questionLink = document.createElement('a');
+      questionLink.href = `explicacoes.html?materia=${encodeURIComponent(toSlug(question.materia))}&topico=${encodeURIComponent(toSlug(question.assunto))}`;
+      questionLink.textContent = `Ver explicação ou status: ${question.assunto}`;
+      review.appendChild(questionLink);
+    }
+    reviewList.appendChild(review);
   }
 
   function renderSummary() {
     const resultCard = document.getElementById('resultsCard');
     if (!resultCard) return;
 
-    const answers = Array.from(questionState.answers.entries());
-    const correctCount = questionState.selected.filter((question) => question.respostaCorreta === questionState.answers.get(question.id)).length;
-    const total = questionState.selected.length;
-    const errors = total - correctCount;
-    const percent = total ? Math.round((correctCount / total) * 100) : 0;
+    const correctCount = state.selected.filter((question) => (
+      state.answers.get(question.id) === question.respostaCorreta
+    )).length;
+    const total = state.selected.length;
+    const errorCount = total - correctCount;
+    const percentage = total ? Math.round((correctCount / total) * 100) : 0;
+    const summary = document.createElement('section');
+    summary.className = 'results-card';
+    summary.appendChild(textElement('h3', 'Resultado final'));
 
-    resultCard.innerHTML = `
-      <div class="results-card">
-        <h3>Resultado final</h3>
-        <div class="answer-summary-grid">
-          <div class="answer-chip"><strong>${correctCount}</strong>Acertos</div>
-          <div class="answer-chip"><strong>${errors}</strong>Erros</div>
-          <div class="answer-chip"><strong>${percent}%</strong>Aproveitamento</div>
-        </div>
-        <div class="review-list">
-          ${questionState.selected.map((question, index) => {
-            const userAnswer = questionState.answers.get(question.id) || '—';
-            const isCorrect = userAnswer === question.respostaCorreta;
-            const itemClass = isCorrect ? 'correct' : 'incorrect';
-            return `
-              <article class="review-item ${itemClass}">
-                <div class="review-top">
-                  <strong>Questão ${index + 1}</strong>
-                  <span>${isCorrect ? 'Acertou' : 'Errou'}</span>
-                </div>
-                <p><strong>Resposta do aluno:</strong> ${userAnswer}</p>
-                <p><strong>Gabarito:</strong> ${question.respostaCorreta}</p>
-                <p>${question.explicacao}</p>
-              </article>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
+    const counts = document.createElement('div');
+    counts.className = 'answer-summary-grid';
+    [
+      [correctCount, 'Acertos'],
+      [errorCount, 'Erros'],
+      [`${percentage}%`, 'Aproveitamento']
+    ].forEach(([value, label]) => {
+      const chip = document.createElement('div');
+      chip.className = 'answer-chip';
+      chip.append(textElement('strong', String(value)), document.createTextNode(label));
+      counts.appendChild(chip);
+    });
+
+    const reviewList = document.createElement('div');
+    reviewList.className = 'review-list';
+    state.selected.forEach((question, index) => appendReview(reviewList, question, index));
+    const restart = document.createElement('button');
+    restart.type = 'button';
+    restart.className = 'button button-primary';
+    restart.textContent = 'Realizar outro simulado';
+    restart.addEventListener('click', resetQuiz);
+    summary.append(counts, reviewList, restart);
+    resultCard.replaceChildren(summary);
+  }
+
+  function renderCurrentQuestion() {
+    renderQuestion(state.selected[state.currentIndex]);
+    const previous = document.getElementById('prevQuestion');
+    const next = document.getElementById('nextQuestion');
+    if (previous) previous.disabled = state.currentIndex === 0;
+    if (next) next.disabled = state.currentIndex === state.selected.length - 1;
   }
 
   function startQuiz() {
-    const filters = getFilters();
-    const filtered = questionState.pool.filter((question) => matchesFilters(question, filters));
-    const maximumAvailable = Math.min(filtered.length, filters.quantity);
+    const selectedFilters = getFilters();
+    const available = state.pool.filter((question) => matchesFilters(question, selectedFilters));
+    const requestedCount = Math.max(15, Math.min(20, selectedFilters.quantity));
+    const count = Math.min(available.length, requestedCount);
 
-    const countWarning = document.getElementById('countWarning');
-    if (countWarning) {
-      countWarning.textContent = `Disponíveis: ${filtered.length}. Será usado ${maximumAvailable} item(ns) nesta sessão.`;
+    if (available.length < requestedCount) {
+      setStatus(`Há ${available.length} questão(ões) disponíveis para estes filtros; o simulado usará todas, sem duplicação.`);
+    } else {
+      setStatus(`${available.length} questão(ões) disponíveis. O simulado usará ${count}.`);
     }
 
-    const usable = fisherYates(filtered).slice(0, Math.max(0, maximumAvailable));
-    questionState.selected = usable;
-    questionState.answers = new Map();
-    questionState.currentIndex = 0;
-    questionState.result = null;
+    state.selected = byBalancedTopics(available).slice(0, count);
+    state.currentIndex = 0;
+    state.answers.clear();
+    document.getElementById('resultsCard')?.replaceChildren();
 
-    const actionBar = document.getElementById('simulationActions');
-    if (actionBar) actionBar.hidden = false;
+    const actions = document.getElementById('simulationActions');
+    if (actions) actions.hidden = state.selected.length === 0;
 
-    if (!usable.length) {
-      document.getElementById('simulationStage').innerHTML = '<div class="empty-state">Nenhuma questão atende aos filtros selecionados. Tente outro filtro.</div>';
+    if (state.selected.length === 0) {
+      document.getElementById('simulationStage')?.replaceChildren(
+        textElement('div', 'Nenhuma questão corresponde aos filtros escolhidos. Tente outra combinação.', 'empty-state')
+      );
       return;
     }
 
-    renderQuestionCard(usable[0], 0, usable.length);
-    renderNavigation();
+    renderCurrentQuestion();
   }
 
-  function renderNavigation() {
-    const actionBar = document.getElementById('simulationActions');
-    if (!actionBar) return;
-
-    const previousButton = document.getElementById('prevQuestion');
-    const nextButton = document.getElementById('nextQuestion');
-    const finishButton = document.getElementById('finishQuiz');
-
-    previousButton.disabled = questionState.currentIndex === 0;
-    nextButton.textContent = questionState.currentIndex === questionState.selected.length - 1 ? 'Próxima' : 'Próxima';
-    finishButton.hidden = questionState.selected.length === 0;
+  function resetQuiz() {
+    state.selected = [];
+    state.answers.clear();
+    state.currentIndex = 0;
+    document.getElementById('resultsCard')?.replaceChildren();
+    document.getElementById('simulationActions').hidden = true;
+    document.getElementById('simulationStage')?.replaceChildren(
+      textElement('div', 'Ajuste os filtros e inicie outro simulado.', 'empty-state')
+    );
+    setStatus('O banco contém questões autorais revisadas. A disponibilidade depende dos filtros escolhidos.');
   }
 
-  function showCurrentQuestion() {
-    if (!questionState.selected.length) return;
-    renderQuestionCard(questionState.selected[questionState.currentIndex], questionState.currentIndex, questionState.selected.length);
-    renderNavigation();
+  function showLoadError(error) {
+    const stage = document.getElementById('simulationStage');
+    if (stage) {
+      stage.replaceChildren(textElement('div', error.message || 'Não foi possível carregar o banco de questões.', 'empty-state'));
+    }
+    const startButton = document.getElementById('startQuiz');
+    if (startButton) startButton.disabled = true;
+    console.error('Falha ao carregar o banco de questões.', error);
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
-    await loadQuestionPool();
+    try {
+      state.pool = await window.TI01MA_QUESTION_DATA.loadQuestions();
+      populateFilters();
+      setStatus(`Banco carregado: ${state.pool.length} questão(ões) disponíveis.`);
+    } catch (error) {
+      showLoadError(error);
+      return;
+    }
 
-    const startButton = document.getElementById('startQuiz');
-    const previousButton = document.getElementById('prevQuestion');
-    const nextButton = document.getElementById('nextQuestion');
-    const finishButton = document.getElementById('finishQuiz');
-
-    startButton?.addEventListener('click', startQuiz);
-
-    previousButton?.addEventListener('click', () => {
-      if (questionState.currentIndex > 0) {
-        questionState.currentIndex -= 1;
-        showCurrentQuestion();
+    document.getElementById('startQuiz')?.addEventListener('click', startQuiz);
+    document.getElementById('prevQuestion')?.addEventListener('click', () => {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        renderCurrentQuestion();
       }
     });
-
-    nextButton?.addEventListener('click', () => {
-      if (questionState.currentIndex < questionState.selected.length - 1) {
-        questionState.currentIndex += 1;
-        showCurrentQuestion();
+    document.getElementById('nextQuestion')?.addEventListener('click', () => {
+      if (state.currentIndex < state.selected.length - 1) {
+        state.currentIndex += 1;
+        renderCurrentQuestion();
       }
     });
-
-    finishButton?.addEventListener('click', () => {
-      const confirmed = window.confirm('Deseja finalizar o simulado?');
-      if (!confirmed) return;
+    document.getElementById('finishQuiz')?.addEventListener('click', () => {
+      if (!window.confirm('Deseja finalizar o simulado?')) return;
       renderSummary();
-      const resultsCard = document.getElementById('resultsCard');
-      if (resultsCard) resultsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('resultsCard')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 })();

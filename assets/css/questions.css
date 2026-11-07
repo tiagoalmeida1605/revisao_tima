@@ -59,6 +59,14 @@
 .question-surface {
   display: grid;
   gap: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.question-prompt {
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .question-meta {
@@ -154,6 +162,14 @@
   margin-bottom: 0.35rem;
 }
 
+.review-item a {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: var(--color-burgundy);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 980px) {
   .filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -161,4 +177,12 @@
 @media (max-width: 620px) {
   .filter-grid { grid-template-columns: 1fr; }
   .answer-summary-grid { grid-template-columns: 1fr; }
+  .simulation-card,
+  .results-card,
+  .filter-panel {
+    padding: 0.85rem;
+  }
+  #simulationActions .button {
+    flex: 1 1 100%;
+  }
 }

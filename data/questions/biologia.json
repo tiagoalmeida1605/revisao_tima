@@ -1,20 +1,38 @@
 [
   {
-    "id": "bio-001",
+    "id": "biologia-embriologia-sequencia-01",
     "materia": "Biologia",
-    "assunto": "Embriologia",
-    "dificuldade": "media",
+    "assunto": "Desenvolvimento embrionário",
+    "dia": "Terça · 10/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "A sequência correta do desenvolvimento embrionário é:",
-    "alternativas": [{"id":"A","texto":"zigoto → mórula → blástula → gástrula"},{"id":"B","texto":"mórula → zigoto → gástrula → blástula"},{"id":"C","texto":"zigoto → gástrula → mórula → blástula"},{"id":"D","texto":"blástula → zigoto → mórula → gástrula"},{"id":"E","texto":"gástrula → zigoto → blástula → mórula"}],
+    "enunciado": "Qual sequência representa a ordem geral das etapas iniciais do desenvolvimento embrionário?",
+    "alternativas": [
+      { "id": "A", "texto": "Zigoto → mórula → blástula → gástrula" },
+      { "id": "B", "texto": "Mórula → zigoto → gástrula → blástula" },
+      { "id": "C", "texto": "Blástula → zigoto → mórula → gástrula" },
+      { "id": "D", "texto": "Zigoto → gástrula → mórula → blástula" },
+      { "id": "E", "texto": "Gástrula → zigoto → blástula → mórula" }
+    ],
     "respostaCorreta": "A",
-    "explicacao": "Após a fecundação, o zigoto passa por divisões e forma a mórula, a blástula e a gástrula.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "Após a fecundação forma-se o zigoto, que passa por segmentações e forma a mórula, depois a blástula e, na gastrulação, a gástrula."
+  },
+  {
+    "id": "biologia-folhetos-embrionarios-01",
+    "materia": "Biologia",
+    "assunto": "Folhetos embrionários",
+    "dia": "Terça · 10/11",
+    "origem": "AUTORAL",
+    "tipo": "autoral",
+    "enunciado": "Qual folheto embrionário origina, entre outras estruturas, o sistema nervoso e a epiderme?",
+    "alternativas": [
+      { "id": "A", "texto": "endoderme" },
+      { "id": "B", "texto": "mesoderme" },
+      { "id": "C", "texto": "ectoderme" },
+      { "id": "D", "texto": "blastocele" },
+      { "id": "E", "texto": "saco vitelínico" }
+    ],
+    "respostaCorreta": "C",
+    "explicacao": "A ectoderme origina estruturas como o sistema nervoso e a epiderme."
   }
 ]

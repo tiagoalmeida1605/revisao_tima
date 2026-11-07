@@ -19,6 +19,12 @@
   align-content: start;
 }
 
+.topic-group {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
 .topic-list-buttons {
   display: grid;
   gap: 0.75rem;
@@ -40,7 +46,23 @@
 }
 
 .markdown-body {
+  min-width: 0;
+  max-width: 100%;
   overflow-wrap: anywhere;
+}
+
+.markdown-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
 }
 
 .markdown-body h1,
@@ -126,5 +148,17 @@
 @media (max-width: 820px) {
   .explanations-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .topic-sidebar,
+  .explanation-panel {
+    padding: 0.85rem;
+    min-width: 0;
+  }
+
+  .topic-button {
+    min-height: 2.75rem;
   }
 }

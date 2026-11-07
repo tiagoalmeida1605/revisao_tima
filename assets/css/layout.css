@@ -65,6 +65,12 @@
   background: transparent;
 }
 
+.brand-mark-text {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  font-weight: 900;
+}
+
 .brand-copy {
   display: flex;
   flex-direction: column;

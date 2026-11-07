@@ -5,119 +5,164 @@
     matematica: {
       title: 'Matemática',
       topics: [
-        { slug: 'funcoes', title: 'Funções', file: 'content/explanations/matematica/funcoes.md', videos: [{ title: 'Funções e gráficos', channel: 'Mundo da Matemática', id: 'bgmH0Z5qVb8' }] },
-        { slug: 'matrizes', title: 'Matrizes', file: 'content/explanations/matematica/matrizes.md', videos: [] }
+        { slug: 'funcoes', title: 'Funções', file: 'content/explanations/matematica/funcoes.md' },
+        { slug: 'matrizes', title: 'Matrizes', file: 'content/explanations/matematica/matrizes.md' },
+        { slug: 'geometria-analitica', title: 'Geometria analítica' },
+        { slug: 'medidas-de-variabilidade', title: 'Medidas de variabilidade' }
       ]
     },
     portugues: {
       title: 'Português',
       topics: [
-        { slug: 'interpretacao-textual', title: 'Interpretação textual', file: 'content/explanations/portugues/interpretacao-textual.md', videos: [{ title: 'Como interpretar textos', channel: 'Aula de Português', id: 'f_EK0JM7vHk' }] }
+        { slug: 'interpretacao-textual', title: 'Interpretação textual', file: 'content/explanations/portugues/interpretacao-textual.md' },
+        { slug: 'conectivos', title: 'Conectivos' },
+        { slug: 'concordancia-nominal', title: 'Concordância nominal' }
+      ]
+    },
+    literatura: {
+      title: 'Literatura',
+      topics: [
+        { slug: 'romantismo-brasileiro', title: 'Romantismo brasileiro' }
+      ]
+    },
+    biologia: {
+      title: 'Biologia',
+      topics: [
+        { slug: 'desenvolvimento-embrionario', title: 'Desenvolvimento embrionário' },
+        { slug: 'folhetos-embrionarios', title: 'Folhetos embrionários' }
       ]
     },
     historia: {
       title: 'História',
       topics: [
-        { slug: 'diaspora-africana', title: 'Diáspora africana', file: 'content/explanations/historia/diaspora-africana.md', videos: [{ title: 'História da escravidão e diáspora', channel: 'História em Foco', id: 'M6X0Zl4Q5YI' }] }
+        { slug: 'absolutismo', title: 'Absolutismo' },
+        { slug: 'mercantilismo-e-sistema-colonial', title: 'Mercantilismo e sistema colonial' },
+        { slug: 'diaspora-africana', title: 'Diáspora africana', file: 'content/explanations/historia/diaspora-africana.md' },
+        { slug: 'uniao-iberica-e-invasoes-holandesas', title: 'União Ibérica e invasões holandesas' }
+      ]
+    },
+    geografia: {
+      title: 'Geografia',
+      topics: [
+        { slug: 'densidade-demografica', title: 'Densidade demográfica' },
+        { slug: 'eutrofizacao', title: 'Eutrofização' }
+      ]
+    },
+    ingles: {
+      title: 'Inglês',
+      topics: [
+        { slug: 'connectors', title: 'Connectors' }
+      ]
+    },
+    fisica: {
+      title: 'Física',
+      topics: [
+        { slug: 'alavancas', title: 'Alavancas' },
+        { slug: 'empuxo', title: 'Empuxo' }
+      ]
+    },
+    quimica: {
+      title: 'Química',
+      topics: [
+        { slug: 'lei-de-lavoisier', title: 'Lei de Lavoisier' }
       ]
     }
   };
 
-  const topicLookup = Object.entries(explanatoryMap).flatMap(([materia, data]) =>
-    data.topics.map((topic) => ({ materia, subjectTitle: data.title, ...topic }))
-  );
+  function createElement(tagName, text, className) {
+    const element = document.createElement(tagName);
+    if (text) element.textContent = text;
+    if (className) element.className = className;
+    return element;
+  }
 
   function getCurrentTopic() {
     const params = new URLSearchParams(window.location.search);
     const materia = params.get('materia') || 'matematica';
-    const topico = params.get('topico') || explanatoryMap[materia]?.topics[0]?.slug || 'funcoes';
-    return { materia, topico };
+    const defaultTopic = explanatoryMap[materia]?.topics[0]?.slug || '';
+    return { materia, topico: params.get('topico') || defaultTopic };
   }
 
   function renderSidebar(activeMateria, activeTopic) {
     const sidebar = document.getElementById('topicSidebar');
     if (!sidebar) return;
-    const html = Object.entries(explanatoryMap).map(([materia, data]) => {
-      const items = data.topics.map((topic) => `
-        <button type="button" class="topic-button ${topic.slug === activeTopic && materia === activeMateria ? 'is-active' : ''}" data-materia="${materia}" data-topic="${topic.slug}">
-          ${data.title}: ${topic.title}
-        </button>
-      `).join('');
-      return `
-        <div class="meta-row">
-          <span class="badge">${data.title}</span>
-        </div>
-        <div class="topic-list-buttons">${items}</div>
-      `;
-    }).join('');
-    sidebar.innerHTML = html;
 
-    sidebar.querySelectorAll('.topic-button').forEach((button) => {
-      button.addEventListener('click', () => {
-        const nextMateria = button.dataset.materia;
-        const nextTopic = button.dataset.topic;
-        const url = new URL(window.location.href);
-        url.searchParams.set('materia', nextMateria);
-        url.searchParams.set('topico', nextTopic);
-        window.location.href = url.toString();
+    const groups = Object.entries(explanatoryMap).map(([materia, data]) => {
+      const heading = createElement('div', data.title, 'badge');
+      const list = createElement('div', '', 'topic-list-buttons');
+      data.topics.forEach((topic) => {
+        const button = createElement(
+          'button',
+          topic.title,
+          `topic-button${topic.slug === activeTopic && materia === activeMateria ? ' is-active' : ''}`
+        );
+        button.type = 'button';
+        button.setAttribute('aria-current', String(topic.slug === activeTopic && materia === activeMateria));
+        button.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          url.searchParams.set('materia', materia);
+          url.searchParams.set('topico', topic.slug);
+          window.location.assign(url);
+        });
+        list.appendChild(button);
       });
+
+      const group = createElement('section', '', 'topic-group');
+      group.append(heading, list);
+      return group;
     });
+
+    sidebar.replaceChildren(...groups);
   }
 
-  function renderVideos(videos) {
-    const container = document.getElementById('videoList');
-    if (!container) return;
-    if (!videos || videos.length === 0) {
-      container.innerHTML = '<div class="empty-video">Nenhuma aula em vídeo cadastrada para este tema ainda.</div>';
-      return;
-    }
-    container.innerHTML = videos.map((video) => `
-      <article class="video-card">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/${video.id}"
-          title="${video.title}"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-        <div class="video-copy">
-          <h4>${video.title}</h4>
-          <p>${video.channel}</p>
-        </div>
-      </article>
-    `).join('');
+  function renderVideos(container) {
+    const message = createElement('p', 'A aula em vídeo ainda não foi adicionada para este assunto.', 'empty-video');
+    container.replaceChildren(message);
   }
 
   async function loadExplanation() {
+    const content = document.getElementById('explanationContent');
+    const videoList = document.getElementById('videoList');
+    const eyebrow = document.getElementById('pageEyebrow');
+    const heading = document.getElementById('pageHeading');
     const { materia, topico } = getCurrentTopic();
-    const topicData = explanatoryMap[materia]?.topics.find((item) => item.slug === topico);
-    if (!topicData) {
-      document.getElementById('explanationContent').innerHTML = '<p>Conteúdo ainda não disponível.</p>';
+    const subject = explanatoryMap[materia];
+    const topic = subject?.topics.find((item) => item.slug === topico);
+
+    renderSidebar(materia, topico);
+
+    if (!subject || !topic) {
+      eyebrow.textContent = 'CENTRAL DE EXPLICAÇÕES';
+      heading.textContent = 'Conteúdo não cadastrado';
+      content.replaceChildren(createElement('p', 'Este assunto ainda não possui uma página cadastrada. Consulte Matérias para ver os conteúdos em preparação.'));
+      renderVideos(videoList);
       return;
     }
 
-    renderSidebar(materia, topico);
-    document.getElementById('pageEyebrow').textContent = `${explanatoryMap[materia].title.toUpperCase()} · ${topicData.title.toUpperCase()}`;
-    document.getElementById('pageHeading').textContent = topicData.title;
+    eyebrow.textContent = `${subject.title.toLocaleUpperCase('pt-BR')} · ${topic.title.toLocaleUpperCase('pt-BR')}`;
+    heading.textContent = topic.title;
+
+    if (!topic.file) {
+      content.replaceChildren(createElement('p', `A explicação de ${topic.title} está em preparação.`));
+      renderVideos(videoList);
+      return;
+    }
 
     try {
-      const response = await fetch(topicData.file, { cache: 'no-store' });
-      if (!response.ok) throw new Error('Arquivo não encontrado');
+      const response = await fetch(topic.file);
+      if (!response.ok) throw new Error(`O arquivo de explicação retornou HTTP ${response.status}.`);
       const markdown = await response.text();
-      const html = window.TI01MA_MARKDOWN.render(markdown);
-      document.getElementById('explanationContent').innerHTML = html;
-      renderVideos(topicData.videos || []);
+      const sanitizedHtml = window.TI01MA_MARKDOWN.render(markdown);
+      content.innerHTML = sanitizedHtml;
+      renderVideos(videoList);
     } catch (error) {
-      document.getElementById('explanationContent').innerHTML = '<p>Não foi possível carregar este conteúdo didático.</p>';
-      renderVideos([]);
-      console.error(error);
+      content.replaceChildren(createElement('p', 'Não foi possível carregar esta explicação. Tente novamente mais tarde.'));
+      renderVideos(videoList);
+      console.error('Falha ao carregar explicação.', error);
     }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('explanationContent')) {
-      loadExplanation();
-    }
+    if (document.getElementById('explanationContent')) loadExplanation();
   });
 })();

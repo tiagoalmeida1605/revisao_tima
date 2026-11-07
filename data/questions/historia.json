@@ -1,38 +1,74 @@
 [
   {
-    "id": "his-001",
+    "id": "historia-absolutismo-01",
     "materia": "História",
     "assunto": "Absolutismo",
-    "dificuldade": "media",
+    "dia": "Quarta · 11/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2026,
-    "numero": 1,
     "tipo": "autoral",
-    "enunciado": "Uma característica central do absolutismo monárquico era:",
-    "alternativas": [{"id":"A","texto":"descentralização do poder"},{"id":"B","texto":"concentração do poder na figura do monarca"},{"id":"C","texto":"eleição direta do rei"},{"id":"D","texto":"igualdade política entre todos"},{"id":"E","texto":"ausência de exército"}],
+    "enunciado": "Uma característica central do absolutismo monárquico no Antigo Regime era:",
+    "alternativas": [
+      { "id": "A", "texto": "a descentralização completa do poder nas aldeias" },
+      { "id": "B", "texto": "a concentração de autoridade política na figura do monarca" },
+      { "id": "C", "texto": "a igualdade política entre todos os grupos sociais" },
+      { "id": "D", "texto": "a eleição direta dos reis por sufrágio universal" },
+      { "id": "E", "texto": "a ausência de impostos e exércitos permanentes" }
+    ],
     "respostaCorreta": "B",
-    "explicacao": "O absolutismo se caracteriza pela concentração de autoridade na monarquia.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "O absolutismo se caracteriza pela concentração do poder político na monarquia, embora sua organização variasse entre os Estados europeus."
   },
   {
-    "id": "his-002",
+    "id": "historia-mercantilismo-colonial-01",
     "materia": "História",
-    "assunto": "Escravidão",
-    "dificuldade": "media",
+    "assunto": "Mercantilismo e sistema colonial",
+    "dia": "Quarta · 11/11",
     "origem": "AUTORAL",
-    "instituicao": "TI01MA",
-    "ano": 2025,
-    "numero": 2,
     "tipo": "autoral",
-    "enunciado": "A diáspora africana foi marcada principalmente por:",
-    "alternativas": [{"id":"A","texto":"migração voluntária de europeus"},{"id":"B","texto":"deslocamento forçado de africanos"},{"id":"C","texto":"fim imediato do tráfico"},{"id":"D","texto":"expansão do direito de voto"},{"id":"E","texto":"conquista territorial na Europa"}],
+    "enunciado": "No sistema colonial mercantilista, a relação entre metrópole e colônia era marcada principalmente por:",
+    "alternativas": [
+      { "id": "A", "texto": "autonomia comercial irrestrita da colônia" },
+      { "id": "B", "texto": "igualdade econômica entre colônia e metrópole" },
+      { "id": "C", "texto": "controle metropolitano do comércio e exploração de recursos coloniais" },
+      { "id": "D", "texto": "proibição de qualquer produção agrícola" },
+      { "id": "E", "texto": "ausência de interesses econômicos europeus" }
+    ],
+    "respostaCorreta": "C",
+    "explicacao": "O sistema colonial buscava favorecer a metrópole por meio do controle político e comercial e da exploração dos recursos coloniais."
+  },
+  {
+    "id": "historia-diaspora-africana-01",
+    "materia": "História",
+    "assunto": "Diáspora africana",
+    "dia": "Quarta · 11/11",
+    "origem": "AUTORAL",
+    "tipo": "autoral",
+    "enunciado": "A diáspora africana relacionada à escravidão atlântica correspondeu:",
+    "alternativas": [
+      { "id": "A", "texto": "à migração voluntária de europeus para a África" },
+      { "id": "B", "texto": "ao deslocamento forçado de milhões de africanos para outras regiões" },
+      { "id": "C", "texto": "ao fim imediato do tráfico de pessoas escravizadas" },
+      { "id": "D", "texto": "à expansão de reinos africanos sobre a América" },
+      { "id": "E", "texto": "à transferência da corte portuguesa para o Brasil" }
+    ],
     "respostaCorreta": "B",
-    "explicacao": "A diáspora africana foi um processo de deslocamento forçado de milhões de pessoas no contexto do tráfico atlântico.",
-    "fonteUrl": "https://example.com/sem-fonte",
-    "statusRevisao": "revisada",
-    "licenca": "autoral"
+    "explicacao": "A diáspora africana foi marcada pelo deslocamento forçado de populações africanas, especialmente pelo tráfico atlântico de pessoas escravizadas."
+  },
+  {
+    "id": "historia-uniao-iberica-01",
+    "materia": "História",
+    "assunto": "União Ibérica e invasões holandesas",
+    "dia": "Quarta · 11/11",
+    "origem": "AUTORAL",
+    "tipo": "autoral",
+    "enunciado": "A União Ibérica (1580–1640) contribuiu para as invasões holandesas no Brasil porque:",
+    "alternativas": [
+      { "id": "A", "texto": "Portugal passou a integrar a monarquia dos Habsburgo, inimiga dos holandeses na conjuntura" },
+      { "id": "B", "texto": "a Holanda tornou-se colônia portuguesa" },
+      { "id": "C", "texto": "o Brasil deixou de produzir açúcar" },
+      { "id": "D", "texto": "a Inglaterra proibiu a navegação atlântica" },
+      { "id": "E", "texto": "a Espanha abandonou todas as colônias americanas" }
+    ],
+    "respostaCorreta": "A",
+    "explicacao": "Com a União Ibérica, os domínios portugueses ficaram sob o mesmo monarca espanhol. Como os Países Baixos estavam em conflito com a Espanha, os interesses holandeses no açúcar brasileiro foram afetados."
   }
 ]
