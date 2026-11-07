@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f3ecdf" id="themeColorMeta">
+    <meta name="description" content="Agenda das avaliações e organização do cronograma da turma TI01MA.">
+    <title>Agenda | 1TIMA</title>
+    <link rel="icon" href="assets/img/brand/1tima-raven-symbol.svg" type="image/svg+xml">
+    <script src="assets/js/brand-config.js"></script>
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/agenda.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+  </head>
+  <body id="topo">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="top-stripe" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial do 1TIMA">
+        <span class="brand-mark" aria-hidden="true">
+          <img data-brand-logo data-alt="Logo 1TIMA" src="" alt="Logo 1TIMA" hidden>
+        </span>
+        <span class="brand-copy"><strong>1<span>TIMA</span></strong><small>guia de estudos · ti01ma</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="agenda.html" aria-current="page">Agenda</a>
+        <a href="materias.html">Matérias</a>
+        <a href="questoes.html">Questões</a>
+        <a href="explicacoes.html">Explicações</a>
+        <a href="fontes.html">Fontes</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+          <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☾</span>
+          <span id="themeToggleLabel">Modo escuro</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="section-shell page-intro">
+        <div>
+          <p class="eyebrow">Planejamento da turma</p>
+          <h1>Agenda de<br><span>avaliações.</span></h1>
+        </div>
+        <aside class="page-intro-aside">
+          <span class="aside-code">TI01MA · 4º bimestre</span>
+          <strong>5</strong>
+          <span>dias de avaliação</span>
+          <small>09 a 13 de novembro</small>
+        </aside>
+      </section>
+
+      <section class="section-shell section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mapa da semana</p>
+            <h2>Calendário completo</h2>
+          </div>
+          <p class="section-note">A agenda foi organizada pela sequência de avaliações e revisões da turma.</p>
+        </div>
+
+        <div class="schedule-grid" id="agendaList"></div>
+      </section>
+
+      <section class="section-shell section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Checklist</p>
+            <h2>Antes das provas</h2>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <article class="info-card">
+            <span class="badge">01</span>
+            <h3>Revisar a matéria</h3>
+            <p>Confira os tópicos da disciplina e os destaques que mais tendem a cair na prova.</p>
+            <a href="materias.html">Abrir matérias ↗</a>
+          </article>
+          <article class="info-card">
+            <span class="badge">02</span>
+            <h3>Praticar sem depender de APIs</h3>
+            <p>O banco local foi organizado para funcionar rapidamente em qualquer ambiente.</p>
+            <a href="questoes.html">Abrir questões ↗</a>
+          </article>
+          <article class="info-card">
+            <span class="badge">03</span>
+            <h3>Conferir explicações</h3>
+            <p>Use a central de explicações para reforçar os conceitos do tema.</p>
+            <a href="explicacoes.html">Abrir explicações ↗</a>
+          </article>
+          <article class="info-card">
+            <span class="badge">04</span>
+            <h3>Validar fontes</h3>
+            <p>Quando precisar, consulte os acervos oficiais e referências documentadas.</p>
+            <a href="fontes.html">Ver fontes ↗</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="footer-symbol" aria-hidden="true">TI</span>
+        <span>TI01MA</span>
+      </div>
+      <span>Portal de estudos · 1º ano técnico em Informática</span>
+      <a href="#topo">Voltar ao topo ↑</a>
+    </footer>
+  </body>
+</html>

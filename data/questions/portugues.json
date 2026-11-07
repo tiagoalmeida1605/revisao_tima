@@ -1,0 +1,38 @@
+[
+  {
+    "id": "por-001",
+    "materia": "Português",
+    "assunto": "Concordância",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Assinale a frase com concordância nominal correta:",
+    "alternativas": [{"id":"A","texto":"Seguem anexos os documentos."},{"id":"B","texto":"Seguem anexo os documentos."},{"id":"C","texto":"Segue anexos os documentos."},{"id":"D","texto":"Seguem anexas os documentos."},{"id":"E","texto":"Segue anexo os documentos."}],
+    "respostaCorreta": "A",
+    "explicacao": "O adjetivo 'anexos' concorda com 'documentos' em gênero e número.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  },
+  {
+    "id": "por-002",
+    "materia": "Português",
+    "assunto": "Conjunções",
+    "dificuldade": "facil",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2025,
+    "numero": 2,
+    "tipo": "autoral",
+    "enunciado": "Na frase 'Estudou muito; portanto, obteve boa nota', a palavra 'portanto' expressa ideia de:",
+    "alternativas": [{"id":"A","texto":"contraste"},{"id":"B","texto":"condição"},{"id":"C","texto":"conclusão"},{"id":"D","texto":"tempo"},{"id":"E","texto":"finalidade"}],
+    "respostaCorreta": "C",
+    "explicacao": "'Portanto' indica consequência, ou seja, conclusão lógica.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

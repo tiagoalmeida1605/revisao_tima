@@ -1,0 +1,38 @@
+[
+  {
+    "id": "his-001",
+    "materia": "História",
+    "assunto": "Absolutismo",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Uma característica central do absolutismo monárquico era:",
+    "alternativas": [{"id":"A","texto":"descentralização do poder"},{"id":"B","texto":"concentração do poder na figura do monarca"},{"id":"C","texto":"eleição direta do rei"},{"id":"D","texto":"igualdade política entre todos"},{"id":"E","texto":"ausência de exército"}],
+    "respostaCorreta": "B",
+    "explicacao": "O absolutismo se caracteriza pela concentração de autoridade na monarquia.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  },
+  {
+    "id": "his-002",
+    "materia": "História",
+    "assunto": "Escravidão",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2025,
+    "numero": 2,
+    "tipo": "autoral",
+    "enunciado": "A diáspora africana foi marcada principalmente por:",
+    "alternativas": [{"id":"A","texto":"migração voluntária de europeus"},{"id":"B","texto":"deslocamento forçado de africanos"},{"id":"C","texto":"fim imediato do tráfico"},{"id":"D","texto":"expansão do direito de voto"},{"id":"E","texto":"conquista territorial na Europa"}],
+    "respostaCorreta": "B",
+    "explicacao": "A diáspora africana foi um processo de deslocamento forçado de milhões de pessoas no contexto do tráfico atlântico.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

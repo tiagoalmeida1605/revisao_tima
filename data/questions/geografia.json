@@ -1,0 +1,20 @@
+[
+  {
+    "id": "geo-001",
+    "materia": "Geografia",
+    "assunto": "Demografia",
+    "dificuldade": "facil",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Uma região tem 120 mil habitantes em 3 mil km². Sua densidade demográfica é:",
+    "alternativas": [{"id":"A","texto":"4 hab./km²"},{"id":"B","texto":"20 hab./km²"},{"id":"C","texto":"40 hab./km²"},{"id":"D","texto":"120 hab./km²"},{"id":"E","texto":"360 hab./km²"}],
+    "respostaCorreta": "C",
+    "explicacao": "120.000 ÷ 3.000 = 40 habitantes por km².",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

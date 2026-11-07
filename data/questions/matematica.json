@@ -1,0 +1,38 @@
+[
+  {
+    "id": "mat-001",
+    "materia": "Matemática",
+    "assunto": "Funções",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Considere a função f(x) = 2x + 3. Qual é o valor de f(4)?",
+    "alternativas": [{"id":"A","texto":"7"},{"id":"B","texto":"9"},{"id":"C","texto":"11"},{"id":"D","texto":"13"},{"id":"E","texto":"15"}],
+    "respostaCorreta": "C",
+    "explicacao": "Substituindo x por 4: 2·4 + 3 = 11.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  },
+  {
+    "id": "mat-002",
+    "materia": "Matemática",
+    "assunto": "Estatística",
+    "dificuldade": "facil",
+    "origem": "VUNESP",
+    "instituicao": "UNESP",
+    "ano": 2024,
+    "numero": 2,
+    "tipo": "autoral",
+    "enunciado": "A amplitude de 3, 5, 7 e 9 é:",
+    "alternativas": [{"id":"A","texto":"2"},{"id":"B","texto":"4"},{"id":"C","texto":"6"},{"id":"D","texto":"7"},{"id":"E","texto":"9"}],
+    "respostaCorreta": "C",
+    "explicacao": "Amplitude = maior valor − menor valor = 9 − 3 = 6.",
+    "fonteUrl": "https://www.vunesp.com.br/",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f3ecdf" id="themeColorMeta">
+    <meta name="description" content="Banco local de questões do 1TIMA com simulados por disciplina e origem.">
+    <title>Questões | 1TIMA</title>
+    <link rel="icon" href="assets/img/brand/1tima-raven-symbol.svg" type="image/svg+xml">
+    <script src="assets/js/brand-config.js"></script>
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/questions.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/questions.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+  </head>
+  <body id="topo">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="top-stripe" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial do 1TIMA">
+        <span class="brand-mark" aria-hidden="true">
+          <img data-brand-logo data-alt="Logo 1TIMA" src="" alt="Logo 1TIMA" hidden>
+        </span>
+        <span class="brand-copy"><strong>1<span>TIMA</span></strong><small>guia de estudos · ti01ma</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="materias.html">Matérias</a>
+        <a href="questoes.html" aria-current="page">Questões</a>
+        <a href="explicacoes.html">Explicações</a>
+        <a href="fontes.html">Fontes</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+          <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☾</span>
+          <span id="themeToggleLabel">Modo escuro</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="section-shell page-intro">
+        <div>
+          <p class="eyebrow">Banco local · 1TIMA</p>
+          <h1>Pratique com<br><span>simulados.</span></h1>
+        </div>
+        <aside class="page-intro-aside">
+          <span class="aside-code">Banco · local e estático</span>
+          <strong>15</strong>
+          <span>questões padrão</span>
+          <small>entre 15 e 20</small>
+        </aside>
+      </section>
+
+      <section class="section-shell questions-shell section-block">
+        <div class="filter-panel panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Configurar simulado</p>
+              <h2>Escolha os filtros</h2>
+            </div>
+          </div>
+
+          <div class="filter-grid">
+            <div class="field">
+              <label for="questionSubject">Disciplina</label>
+              <select id="questionSubject"></select>
+            </div>
+            <div class="field">
+              <label for="questionSource">Origem</label>
+              <select id="questionSource"></select>
+            </div>
+            <div class="field">
+              <label for="questionInstitution">Instituição</label>
+              <select id="questionInstitution"></select>
+            </div>
+            <div class="field">
+              <label for="questionYear">Ano</label>
+              <select id="questionYear"></select>
+            </div>
+            <div class="field">
+              <label for="questionDifficulty">Dificuldade</label>
+              <select id="questionDifficulty"></select>
+            </div>
+            <div class="field">
+              <label for="questionQuantity">Quantidade</label>
+              <select id="questionQuantity">
+                <option value="15" selected>15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <button id="startQuiz" class="button button-primary" type="button">Iniciar simulado</button>
+            <span id="countWarning" class="mini-note">Selecione filtros e inicie um simulado.</span>
+          </div>
+        </div>
+
+        <div id="simulationStage" class="simulation-card">
+          <div class="empty-state">Ainda não há simulado em andamento. Ajuste os filtros e clique em iniciar.</div>
+        </div>
+
+        <div id="simulationActions" class="panel-actions" hidden>
+          <button id="prevQuestion" class="button button-muted" type="button">Anterior</button>
+          <button id="nextQuestion" class="button button-primary" type="button">Próxima</button>
+          <button id="finishQuiz" class="button button-secondary" type="button">Finalizar</button>
+        </div>
+
+        <div id="resultsCard" class="results-card" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="footer-symbol" aria-hidden="true">TI</span>
+        <span>TI01MA</span>
+      </div>
+      <span>Portal de estudos · 1º ano técnico em Informática</span>
+      <a href="#topo">Voltar ao topo ↑</a>
+    </footer>
+  </body>
+</html>

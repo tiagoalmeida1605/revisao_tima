@@ -1,0 +1,20 @@
+[
+  {
+    "id": "bio-001",
+    "materia": "Biologia",
+    "assunto": "Embriologia",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "A sequência correta do desenvolvimento embrionário é:",
+    "alternativas": [{"id":"A","texto":"zigoto → mórula → blástula → gástrula"},{"id":"B","texto":"mórula → zigoto → gástrula → blástula"},{"id":"C","texto":"zigoto → gástrula → mórula → blástula"},{"id":"D","texto":"blástula → zigoto → mórula → gástrula"},{"id":"E","texto":"gástrula → zigoto → blástula → mórula"}],
+    "respostaCorreta": "A",
+    "explicacao": "Após a fecundação, o zigoto passa por divisões e forma a mórula, a blástula e a gástrula.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "fis-001",
+    "materia": "Física",
+    "assunto": "Alavancas",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Uma força de 40 N atua a 0,5 m do eixo de rotação. Para equilibrar a alavanca, uma força de F atua a 2 m do eixo no lado oposto. O valor de F é:",
+    "alternativas": [{"id":"A","texto":"5 N"},{"id":"B","texto":"10 N"},{"id":"C","texto":"20 N"},{"id":"D","texto":"40 N"},{"id":"E","texto":"80 N"}],
+    "respostaCorreta": "B",
+    "explicacao": "Momento 1 = 40 × 0,5 = 20. O momento 2 deve ser igual: F × 2 = 20, então F = 10 N.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

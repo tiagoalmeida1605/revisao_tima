@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ing-001",
+    "materia": "Inglês",
+    "assunto": "Conectores",
+    "dificuldade": "facil",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "O termo 'however' em 'Many students use public transport. However, buses can be crowded during rush hour' indica:",
+    "alternativas": [{"id":"A","texto":"adição"},{"id":"B","texto":"causa"},{"id":"C","texto":"contraste"},{"id":"D","texto":"tempo"},{"id":"E","texto":"finalidade"}],
+    "respostaCorreta": "C",
+    "explicacao": "'However' introduz uma ideia de contraste, que é equivalente a 'porém'.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "lit-001",
+    "materia": "Literatura",
+    "assunto": "Romantismo",
+    "dificuldade": "media",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2026,
+    "numero": 1,
+    "tipo": "autoral",
+    "enunciado": "Uma característica marcante do Romantismo brasileiro é:",
+    "alternativas": [{"id":"A","texto":"rigor científico e objetividade"},{"id":"B","texto":"valorização da emoção e da subjetividade"},{"id":"C","texto":"desprezo por temas nacionales"},{"id":"D","texto":"exclusão da natureza"},{"id":"E","texto":"foco na arquitetura clássica"}],
+    "respostaCorreta": "B",
+    "explicacao": "O Romantismo valoriza sentimentos, subjetividade e a expressão do eu.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  },
+  {
+    "id": "lit-002",
+    "materia": "Literatura",
+    "assunto": "Autores",
+    "dificuldade": "facil",
+    "origem": "AUTORAL",
+    "instituicao": "TI01MA",
+    "ano": 2025,
+    "numero": 2,
+    "tipo": "autoral",
+    "enunciado": "O autor associado à terceira geração do Romantismo e à crítica social é:",
+    "alternativas": [{"id":"A","texto":"Gonçalves Dias"},{"id":"B","texto":"José de Alencar"},{"id":"C","texto":"Castro Alves"},{"id":"D","texto":"Machado de Assis"},{"id":"E","texto":"Olavo Bilac"}],
+    "respostaCorreta": "C",
+    "explicacao": "Castro Alves é um dos principais nomes da poesia social e condenatória do Romantismo.",
+    "fonteUrl": "https://example.com/sem-fonte",
+    "statusRevisao": "revisada",
+    "licenca": "autoral"
+  }
+]

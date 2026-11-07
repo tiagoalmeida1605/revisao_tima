@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f3ecdf" id="themeColorMeta">
+    <meta name="description" content="Conteúdos organizados por disciplina e dia para a TI01MA.">
+    <title>Matérias | 1TIMA</title>
+    <link rel="icon" href="assets/img/brand/1tima-raven-symbol.svg" type="image/svg+xml">
+    <script src="assets/js/brand-config.js"></script>
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/materias.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+  </head>
+  <body id="topo">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="top-stripe" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial do 1TIMA">
+        <span class="brand-mark" aria-hidden="true">
+          <img data-brand-logo data-alt="Logo 1TIMA" src="" alt="Logo 1TIMA" hidden>
+        </span>
+        <span class="brand-copy"><strong>1<span>TIMA</span></strong><small>guia de estudos · ti01ma</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="materias.html" aria-current="page">Matérias</a>
+        <a href="questoes.html">Questões</a>
+        <a href="explicacoes.html">Explicações</a>
+        <a href="fontes.html">Fontes</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+          <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☾</span>
+          <span id="themeToggleLabel">Modo escuro</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="section-shell page-intro">
+        <div>
+          <p class="eyebrow">Conteúdo por disciplina</p>
+          <h1>Revisão por<br><span>matéria.</span></h1>
+        </div>
+        <aside class="page-intro-aside">
+          <span class="aside-code">TI01MA · 9 disciplinas</span>
+          <strong>9</strong>
+          <span>componentes ativos</span>
+          <small>organizados por dia</small>
+        </aside>
+      </section>
+
+      <section class="section-shell section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Busca rápida</p>
+            <h2>Filtrar conteúdos</h2>
+          </div>
+          <input id="materiaFilter" type="search" aria-label="Filtrar conteúdos" placeholder="Buscar por disciplina ou assunto" />
+        </div>
+
+        <div class="matter-list">
+          <article class="subject-section" id="segunda" data-materia-card>
+            <div class="day-panel-header">
+              <div>
+                <span class="badge">Segunda · 09/11</span>
+                <h3>Leitura, linguagem e literatura</h3>
+              </div>
+            </div>
+            <div class="subject-grid">
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">PT</span>
+                  <span class="subject-tag">Português</span>
+                </div>
+                <h4>Conjunções e concordância</h4>
+                <p>Preposições, conjunções, coesão e regras de concordância nominal.</p>
+                <ul class="check-list">
+                  <li>Conjunções e relações de sentido</li>
+                  <li>Concordância nominal de adjetivos e artigos</li>
+                  <li>Gêneros textuais e coesão</li>
+                </ul>
+                <a href="explicacoes.html?materia=portugues&topico=interpretacao-textual" class="button button-secondary">Abrir explicação</a>
+              </article>
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">LT</span>
+                  <span class="subject-tag">Literatura</span>
+                </div>
+                <h4>Romantismo</h4>
+                <p>Contexto histórico, características da escola, autores e principal temática.</p>
+                <ul class="check-list">
+                  <li>Subjetividade e emoção</li>
+                  <li>Romantismo brasileiro e nacionalismo</li>
+                  <li>Autores e movimentos</li>
+                </ul>
+                <a href="explicacoes.html?materia=historia&topico=diaspora-africana" class="button button-secondary">Abrir explicação</a>
+              </article>
+            </div>
+          </article>
+
+          <article class="subject-section" id="terca" data-materia-card>
+            <div class="day-panel-header">
+              <div>
+                <span class="badge">Terça · 10/11</span>
+                <h3>Números, formas e vida</h3>
+              </div>
+            </div>
+            <div class="subject-grid">
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">MT</span>
+                  <span class="subject-tag">Matemática</span>
+                </div>
+                <h4>Geometria analítica</h4>
+                <p>Reta, coeficiente angular, interseções, circunferência e alinhamento.</p>
+                <ul class="check-list">
+                  <li>Equação da reta</li>
+                  <li>Pontos e inclinação</li>
+                  <li>Interseção de retas</li>
+                </ul>
+                <a href="explicacoes.html?materia=matematica&topico=funcoes" class="button button-secondary">Abrir explicação</a>
+              </article>
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">BIO</span>
+                  <span class="subject-tag">Biologia</span>
+                </div>
+                <h4>Embriologia e tecidos</h4>
+                <p>Desenvolvimento, folhetos embrionários e organização básica do corpo.</p>
+                <ul class="check-list">
+                  <li>Zigoto, mórula e gástrula</li>
+                  <li>Ectoderme, endoderme e mesoderme</li>
+                  <li>Estruturas e funções</li>
+                </ul>
+                <a href="explicacoes.html?materia=matematica&topico=matrizes" class="button button-secondary">Abrir explicação</a>
+              </article>
+            </div>
+          </article>
+
+          <article class="subject-section" id="quarta" data-materia-card>
+            <div class="day-panel-header">
+              <div>
+                <span class="badge">Quarta · 11/11</span>
+                <h3>História, sociedade e geografia</h3>
+              </div>
+            </div>
+            <div class="subject-grid">
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">HI</span>
+                  <span class="subject-tag">História</span>
+                </div>
+                <h4>Absolutismo e escravidão</h4>
+                <p>Monarquias absolutistas, expansão colonial e impactos sociais.</p>
+                <ul class="check-list">
+                  <li>Antigo Regime</li>
+                  <li>Absolutismo</li>
+                  <li>Diáspora africana</li>
+                </ul>
+                <a href="explicacoes.html?materia=historia&topico=diaspora-africana" class="button button-secondary">Abrir explicação</a>
+              </article>
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">GE</span>
+                  <span class="subject-tag">Geografia</span>
+                </div>
+                <h4>Demografia e meio ambiente</h4>
+                <p>Densidade demográfica, urbanização, recursos e impactos ambientais.</p>
+                <ul class="check-list">
+                  <li>Densidade demográfica</li>
+                  <li>Eutrofização e poluição</li>
+                  <li>Distribuição da população</li>
+                </ul>
+                <a href="explicacoes.html?materia=matematica&topico=funcoes" class="button button-secondary">Abrir explicação</a>
+              </article>
+            </div>
+          </article>
+
+          <article class="subject-section" id="quinta" data-materia-card>
+            <div class="day-panel-header">
+              <div>
+                <span class="badge">Quinta · 12/11</span>
+                <h3>Inglês</h3>
+              </div>
+            </div>
+            <div class="subject-grid">
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">EN</span>
+                  <span class="subject-tag">Inglês</span>
+                </div>
+                <h4>Leitura e conectores</h4>
+                <p>Estruturas de contraste, causa e consequência em textos curtos.</p>
+                <ul class="check-list">
+                  <li>Vocabulary review</li>
+                  <li>Conectores textuais</li>
+                  <li>Interpretação de textos</li>
+                </ul>
+                <a href="questoes.html" class="button button-secondary">Praticar questões</a>
+              </article>
+            </div>
+          </article>
+
+          <article class="subject-section" id="sexta" data-materia-card>
+            <div class="day-panel-header">
+              <div>
+                <span class="badge">Sexta · 13/11</span>
+                <h3>Fenômenos, energia e composição</h3>
+              </div>
+            </div>
+            <div class="subject-grid">
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">FÍ</span>
+                  <span class="subject-tag">Física</span>
+                </div>
+                <h4>Força, alavancas e empuxo</h4>
+                <p>Leis da alavanca, equilibro de momentos e empuxo.</p>
+                <ul class="check-list">
+                  <li>Momento de força</li>
+                  <li>Alavancas</li>
+                  <li>Empuxo</li>
+                </ul>
+                <a href="questoes.html" class="button button-secondary">Praticar questões</a>
+              </article>
+              <article class="subject-card">
+                <div class="subject-top">
+                  <span class="subject-badge">QM</span>
+                  <span class="subject-tag">Química</span>
+                </div>
+                <h4>Reações e conservação</h4>
+                <p>Lei de conservação das massas e relação entre reagentes e produtos.</p>
+                <ul class="check-list">
+                  <li>Massas e reagentes</li>
+                  <li>Reações simples</li>
+                  <li>Conservação da massa</li>
+                </ul>
+                <a href="questoes.html" class="button button-secondary">Praticar questões</a>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="footer-symbol" aria-hidden="true">TI</span>
+        <span>TI01MA</span>
+      </div>
+      <span>Portal de estudos · 1º ano técnico em Informática</span>
+      <a href="#topo">Voltar ao topo ↑</a>
+    </footer>
+  </body>
+</html>
